@@ -1,0 +1,41 @@
+<nav class="nav navbar navbar-fixed-top">
+  <div class="container-fluid">
+
+    <div class="row">
+      <section class="navbar-header col-xs-offset-2 col-xs-9 col-sm-3 col-md-2">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="glyphicon glyphicon-align-justify"></span>
+
+        </button>
+
+        <%= image_tag "h_white.png", class: "logo" %>
+        <a class="navbar-brand" href="#">HBook</a>
+
+
+      </section>
+
+        <!-- Collapsable navbar -->
+      <div class="collapse navbar-collapse test" id="navbar-collapse" style="height">
+
+      <!-- Login Info -->
+      <form class="navbar-form navbar-right" role="form">
+
+        <!-- Email -->
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Email">
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+          <input type="password" class="form-control" placeholder="Password">
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group">
+          <input type="submit" class="form-control btn btn-default" value="Login">
+         </div>
+      </form>
+    </div>
+  </div>
+</nav>

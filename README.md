@@ -1,5 +1,5 @@
 #HBook
 
-##[Hannah Squier](github.com/hannahsquier)
+##[Hannah Squier](https://github.com/hannahsquier)
 
 A Facebook Clone

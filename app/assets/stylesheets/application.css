@@ -1,15 +1,395 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+/*nav bar*/
+
+.navbar {
+  height: 70px;
+  background-color: #3b5998;
+  border: none;
+  padding-right: 30px; }
+
+.navbar-default .navbar-toggle,
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: #3b5998;
+  border: none; }
+
+.navbar-collapse {
+  background-color: #3b5998;
+  border: none; }
+
+.custom {
+  background-color: #3b5998; }
+
+.navbar .navbar-brand {
+  font-size: 40px;
+  color: #fff;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.navbar-brand:hover{
+  color: #fff;
+}
+.navbar .logo {
+  width: 55px;
+  height: 55px;
+  margin-top: 5px;
+  margin-left: -200px;
+  display: inline-block;
+  background-position: center; }
+
+.form-control {
+  margin-top: 20px;
+  vertical-align: top; }
+.search-bar {
+  width: 100% !important ;
+}
+.search-bar-container {
+  width:  30%;
+}
+
+.name {
+height: 40px;
+font-weight: normal;
+font-size: 16px;
+color: #fff;
+
+margin-top: 20px;
+ }
+
+.name-container {
+  padding-top: 20px;
+  width: 20%;
+}
+
+
+@media only screen and (max-width: 768px) {
+.name {
+  visibility: hidden; }
+
+.form-control {
+  margin-bottom: 10px;
+  width: 90%; } }
+
+.navbar .glyphicon {
+color: white;
+font-size: 28px; }
+
+/** cover photo **/
+.navbar-form {
+  margin-top: -5px;
+}
+.cover-photo-div {
+  padding: 0px;
+}
+.cover-photo {
+  width:100%;
+  z-index: -50;
+
+}
+
+.profile-pic {
+position: absolute;
+top: 63%;
+margin-left: 25px;
+width: 200px;
+clip: rect(0px,200px,200px,0px);
+border: 4px solid #eee;
+z-index: 1;
+}
+
+.edit-profile {
+width: 100%;
+padding-right: 10px;
+position: absolute;
+top: 95%;
+text-align: right;
+margin-right: 20px;
+color: #aaa;
+z-index: 2;
+
+}
+
+@media only screen and (max-width: 800px) {
+  .edit-profile {
+  position: absolute;
+  top: 80%;
+  }
+}
+@media only screen and (max-width: 768px) {
+.profile-pic {
+  margin-left: 5px;
+  width: 180px;
+  clip: rect(0px,200px,200px,0px);}
+}
+
+@media only screen and (max-width: 768px) {
+.profile-pic {
+  margin-left: 5px;
+  width: 180px;
+  clip: rect(0px,180px,180px,0px);}
+}
+
+@media only screen and (max-width: 600px) {
+.profile-pic {
+  width: 160px;
+  clip: rect(0px,160px,160px,0px);}
+}
+
+
+.sub-nav {
+  border: solid #eee 2px;
+}
+
+.active {
+  background-color: #eee;
+  border: 1px #eee solid;
+}
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus{
+background-color: #ddd;
+border: none;
+border-radius: 0;
+color: black;
+}
+
+.nav-pills>li>a{
+  font-size: 16px;
+  color:  #3b5998;
+  border-radius: 0;
+}
+/** content **/
+.content {
+  border: 2px #aaa solid;
+  margin-top: 20px;
+  padding-bottom: 10px;
+}
+
+.content h2 {
+  text-align: center;
+  background-color: #ddd;
+  text-align: center;
+  line-height: 50px;
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-top: 0px;
+}
+
+.btn-photo, .btn-edit{
+  margin: 10px;
+}
+
+/** photos **/
+.photo {
+  width: 100%;
+}
+
+a.hovertext {
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+a.hovertext:after {
+  content: attr(title);
+  position: absolute;
+  left: 0;
+  bottom: -75px;
+  padding: 20px 0 20px 0;
+  width: 100%;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  opacity: 0;
+  margin-top: 500px;
+}
+a.hovertext:hover:after, a.hovertext:focus:after {
+  opacity: 1.0;
+}
+
+/** friends **/
+  .friend {
+    border: 1px #aaa solid;
+    margin-top: 5px;
+    margin-right: 5px;
+  }
+
+   .friend img {
+      width: 100%;
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+   .friend p {
+      margin-top: 30%;
+      margin-bottom: -60px;
+    }
+
+@media only screen and (max-width: 600px) {
+   .friend p {
+      margin-top: 10%;}
+
+  #friend-num {
+    visibility: hidden;
+  }
+}
+
+    #friend-num {
+      color: #aaa;
+    }
+
+    #unfriend {
+      font-size: 12px;
+      padding: 5px;
+      margin-top: 55%;
+      width: 100%;
+    }
+  }
+
+/** timeline **/
+#timeline #left {
+  margin-top: 0;
+  display: inline-block;
+  vertical-align: top; }
+#timeline #right {
+  margin-left: 0;
+  display: inline-block; }
+#timeline article {
+  border: 2px #aaa solid;
+  margin: 10px 0; }
+#timeline h2 {
+  margin: 0;
+  background-color: #ddd;
+  text-align: center;
+  line-height: 32px;
+  font-size: 18px; }
+  #timeline h2 button {
+    margin-left: 80%;
+    margin-bottom: 3px;
+    height: 25px;
+    width: 60px;
+    line-height: 14px;
+    padding: 5px 5px;
+    background-color: #3b5998; }
+#timeline .form-group {
+  margin: 0; }
+#timeline textarea {
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-bottom: 10px;
+  width: 90%;
+  resize:none;}
+#timeline .posted-post .my-thumbnail {
+  display: inline-block;
+  clip: rect(0px, 100px, 100px, 0px);
+  margin: 10px; }
+  #timeline .my-thumbnail img {
+    position: absolute;
+    width: 60px;
+    clip: rect(0px, 60px, 60px, 0px); }
+#timeline .posted-post p {
+  margin: 20px 10px 10px 10px; }
+#timeline .posted-post a p {
+  margin-top: 20px;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 60px;
+  color: #3b5998; }
+#timeline .posted-post #post-date {
+  font-size: 12px;
+  color: #555;
+  margin-top: -10px;
+  margin-left: 84px; }
+#timeline .posted-post h2 p {
+  font-size: 14px;
+  display: inline-block;
+  margin: 0 5px;
+  color: #3b5998; }
+#timeline .posted-post #delete {
+   }
+#timeline .posted-post .liked-this {
+  color: #555;
+  font-size: 14px;
+  margin-left: 20px;
+ }
+  #timeline .posted-post .liked-this a {
+    color: #3b5998; }
+#timeline .comment {
+  background-color: #eee;
+
+  margin-top: -10px !important;
+  border: none;
+  border: 1px #aaa solid; }
+  #timeline .comment .action {
+    font-size: 14px;
+    color: #3b5998;
+    display: inline-block;
+    margin: 15px; }
+  #timeline .comment .likes-count {
+    display: inline-block;
+    font-size: 14px;
+    color: #aaa;
+    margin: 10px; }
+  #timeline .comment #delete-comment {
+
+    vertical-align: bottom; }
+  .no-center {
+    text-align: left;
+  }
+#timeline #cancel {
+  font-size: 12px;
+  color: #888; }
+#timeline .photos .photo {
+  display: inline-block;
+  width: 86px;
+  margin: 5px; }
+#timeline .photos a {
+  display: inline;
+  padding-left: 30%;
+  text-align: center;
+  color: #3b5998;
+  margin-bottom: 25px; }
+#timeline .friends .friend {
+  display: inline-block;
+  height: 80px;
+  margin: 10px;
+  clip: rect(0px,80px,80px,0px); }
+#timeline .friends .friend-div {
+  width: 95px;
+  display: inline-block;
+  text-align: center; }
+  #timeline .friends div p {
+    margin-top: -8px;
+    font-size: 12px;
+    color: #333; }
+#timeline .friends a {
+  display: inline;
+  padding-left: 30%;
+  text-align: center;
+  color: #3b5998;
+  margin-bottom: 30px; }
+.no-left-margin {
+  margin-left: -60px;
+}
+
+
+footer p {
+  text-align: center;
+}
+
+/*sign up*/
+
+  #intro-copy {
+  margin-top: 10%; }
+  #intro-copy h3 {
+    font-size: 32px;
+    line-height: 50px;
+    font-weight: bold;
+    text-align: center; }
+  #intro-copy ul {
+    font-size: 18px;
+    line-height: 40px; }
+
+#sign-up-form h2 {
+  font-size: 48px;
+  margin-bottom: 10%; }
+#sign-up-form button {
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 5%; }
