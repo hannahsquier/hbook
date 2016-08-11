@@ -8,4 +8,13 @@ class StaticPagesController < ApplicationController
 
   def timeline
   end
+
+  def edit_profile
+  end
+
+  def friends
+  end
+
+  def photos
+  end
 end

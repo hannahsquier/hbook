@@ -1,4 +1,7 @@
 /*nav bar*/
+#welcome {
+  margin-top: 100px;
+}
 
 .navbar {
   height: 70px;

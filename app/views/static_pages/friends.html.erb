@@ -1,0 +1,52 @@
+<%= render 'cover' %>
+
+<%= render 'subnav' %>
+
+
+<main class="row">
+      <section class="col-xs-12 content">
+        <h2>Friends</h2>
+
+        <div class="row">
+      <% 5.times do %>
+          <article class="col-xs-offset-1 col-xs-10 col-lg-offset-1 col-lg-5 friend">
+            <div class="row">
+              <div class="col-xs-4">
+                <%= image_tag "user_silhouette_generic.jpg" %>
+              </div>
+
+              <div class="col-xs-5">
+                <a href="#"><p>Hermoine Granger</p></a>
+                <br>
+                <a href="#" id="friend-num"><p id="friend-num">400 friends</p></a>
+              </div>
+
+              <div class="col-xs-3">
+                <a href="#"><button class="btn btn-success" id="unfriend">Unfriend</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="col-xs-offset-1 col-xs-10 col-lg-offset-0 col-lg-5 friend">
+            <div class="row">
+              <div class="col-xs-4">
+                <%= image_tag "user_silhouette_generic.jpg" %>
+              </div>
+
+              <div class="col-xs-5">
+                <a href="#"><p>Hermoine Granger</p></a>
+                <br>
+                <a href="#" id="friend-num"><p id="friend-num">400 friends</p></a>
+              </div>
+
+              <div class="col-xs-3">
+                <a href="#"><button class="btn btn-success" id="unfriend">Unfriend</button>
+              </div>
+            </div>
+          </article>
+
+         <% end %>
+      </section>
+    </main>
+
+<%= render 'footer' %>
