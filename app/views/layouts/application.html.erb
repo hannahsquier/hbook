@@ -21,21 +21,38 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
   </head>
 
   <body data-no-turbolinks>
 
-     <% if current_user %>
-    <%= render '/layouts/logged_in_navbar' %>
-     <% else %>
-    <%= render '/layouts/logged_out_navbar' %>
+    <% flash.each do |type, message| %>
 
-     <% end %>
+      <% if type == "sorry" || type == "error" %>
+        <div class="alert alert-danger">
+          <strong><%= type.capitalize %>! <%= message %></strong>
+        </div>
+
+      <% else %>
+        <div class="alert alert-success">
+          <strong><%= type.capitalize %>! <%= message %></strong>
+        </div>
+
+      <% end %>
+    <% end %>
+
+    <% if current_user %>
+      <%= render '/layouts/logged_in_navbar' %>
+    <% else %>
+      <%= render '/layouts/logged_out_navbar' %>
+    <% end %>
+
     <div class="container">
-    <%= yield %>
-  </div>
+
+      <%= yield %>
+
+    </div>
   </body>
 </html>

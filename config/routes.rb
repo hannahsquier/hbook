@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   root to: "static_pages#home"
 
   resource :session
+  resources :users
 
+  get "/home" => "static_pages#home"
   get "/about" => "static_pages#about"
   get "/timeline" => "static_pages#timeline"
   get "/friends" => "static_pages#friends"

@@ -9,13 +9,27 @@ class SessionsController < ApplicationController
       else
         sign_in(@user)
       end
-    flash[:success] = "You are now signed in."
-    redirect_to timeline_path
+      flash[:success] = "You are now signed in."
+      redirect_to timeline_path
 
     else
-      flash.now[:error] = "We could not sign you in."
+      flash[:error] = "Invalid email or password."
       redirect_to root_path
     end
+  end
+
+  def destroy
+    @user = User.find_by_email(params[:email])
+
+    if sign_out
+      flash[:success] = "You are now signed out."
+      redirect_to root_path
+
+    else
+      flash[:error] = "We were not able to sign you out."
+      redirect_to root_path
+    end
+
   end
 
 end

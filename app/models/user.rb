@@ -1,6 +1,13 @@
 class User < ApplicationRecord
   before_create :generate_auth_token
   has_secure_password
+
+  validates :password, length: { minimum: 6, maximum: 20 }, on: :create
+  validates :first_name, presence: true, on: :create
+  validates :last_name, presence: true, on: :create
+  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
+
+
   def generate_auth_token
     begin
       self.auth_token = SecureRandom.urlsafe_base64

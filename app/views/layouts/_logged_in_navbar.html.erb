@@ -9,7 +9,7 @@
         </button>
         <%= image_tag "h_white.png", class: "logo" %>
 
-        <a class="navbar-brand" href="#">HBook</a>
+        <%= link_to 'HBook', home_path, class: "navbar-brand" %>
       </div>
 
 
@@ -22,6 +22,8 @@
       <a href="timeline.html" class="name ">
         <span class="glyphicon glyphicon-user"></span> Harry Potter
       </a>
+
+      <%= link_to "Sign Out", session_path, method: :delete %>
     </div>
 
 
