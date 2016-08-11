@@ -19,22 +19,31 @@
       <div class="collapse navbar-collapse test" id="navbar-collapse" style="height">
 
       <!-- Login Info -->
-      <form class="navbar-form navbar-right" role="form">
-
+      <!-- <form class="navbar-form navbar-right" role="form"> -->
+     <%= form_tag session_path, class: "navbar-form navbar-right" do %>
         <!-- Email -->
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Email">
+          <%= email_field_tag :email, nil, class: 'form-control', placeholder:"Email" %>
         </div>
 
-        <!-- Password -->
+
         <div class="form-group">
-          <input type="password" class="form-control" placeholder="Password">
+          <%= password_field_tag :password, nil, class: 'form-control', placeholder: 'Password' %>
         </div>
 
         <!-- Submit Button -->
         <div class="form-group">
-          <input type="submit" class="form-control btn btn-default" value="Login">
-         </div>
+
+          <%= submit_tag "Login", class: "form-control btn btn-default" %>
+        </div>
+
+
+          <%= label_tag do %>
+            Remember me?
+            <%= check_box_tag :remember_me, class: 'form-control' %>
+          <% end %>
+
+        <% end %>
       </form>
     </div>
   </div>
