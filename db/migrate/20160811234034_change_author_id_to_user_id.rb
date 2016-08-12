@@ -1,7 +1,7 @@
 class ChangeAuthorIdToUserId < ActiveRecord::Migration[5.0]
   def change
     remove_column :comments, :author_id
-    add_column :comments, :user_id, :foreign_key
+    add_column :comments, :user_id, :references, :foreign_key
       add_index :comments, :user_id
 
   end
