@@ -1,0 +1,21 @@
+<% post.comments.each do |comment| %>
+        <article class="comment posted-post row">
+          <a href="timeline.html" class="my-thumbnail">
+            <%= image_tag "harry_potter_small.jpg" %>
+          </a>
+
+          <a href="timeline.html"><p>Harry Potter</p></a>
+
+    <p id="post-date"><%= post.created_at.strftime("%A %B, %d %Y") %></p>
+
+          <p>
+           <%= comment.body %>
+          </p>
+
+          <div class="row">
+            <div class="col-xs-8"><a href="#" class="action" id="like">Like</a><p class="likes-count">3 other people like this</p></div>
+
+            <div class=" col-xs-1"><a href="#" class="col-xs-1" id="delete"><p>Delete</p></a></div>
+          </div>
+        </article>
+<% end %>

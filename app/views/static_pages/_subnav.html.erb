@@ -2,20 +2,39 @@
    <div class=" col-xs-12 sub-nav">
     <div class="col-xs-offset-7 col-sm-offset-5 col-lg-offset-3 col-xs-6 col-sm-8 col-lg-9">
       <ul class="nav nav-pills">
-        <li>
-          <a href="timeline.html">Timeline</a>
+        <li
+          <% if params[:action] == 'timeline' %>
+            class="active"
+          <% end %>
+        >
+           <%= link_to 'Timeline', timeline_path %>
         </li>
 
-        <li class="active">
-          <a href="about.html">About</a>
+        <li
+          <% if params[:action] == 'about' %>
+            class="active"
+          <% end %>
+          >
+           <%= link_to 'About', about_path %>
+
         </li>
 
-        <li>
-          <a href="photos.html">Photos <span class="badge">1310</span></a>
+        <li
+         <% if params[:action] == 'photos' %>
+            class="photos"
+          <% end %>
+        >
+          <%= link_to 'Photos <span class="badge">1310</span>'.html_safe, photos_path %>
+
         </li>
 
-        <li>
-          <a href="friends.html">Friends <span class="badge">310</span></a>
+        <li
+         <% if params[:action] == 'friends' %>
+            class="friends"
+          <% end %>
+          >
+          <%= link_to 'Friends <span class="badge">310</span>'.html_safe, friends_path %>
+
         </li>
 
     </div>

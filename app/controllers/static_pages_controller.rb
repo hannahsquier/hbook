@@ -12,6 +12,8 @@ class StaticPagesController < ApplicationController
   end
 
   def timeline
+    @post = Post.new
+    @comment = Comment.new
   end
 
   def edit_profile
