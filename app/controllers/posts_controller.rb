@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :require_login
 
   def index
+    @profile = Profile.find_by_user_id(params[:user_id])
     @post = Post.new
     @comment = Comment.new
   end

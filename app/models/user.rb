@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments
   has_one :profile
+  has_many :likes, foreign_key: "liker_id"
 
   def full_name
     "#{first_name} #{last_name}"
@@ -26,6 +27,6 @@ class User < ApplicationRecord
   def regenerate_auth_token
     self.auth_token = nil
     generate_auth_token
-    save!
+    save
   end
 end

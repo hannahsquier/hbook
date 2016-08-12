@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :users, except: [:destroy, :index], shallow: true do
     resources :posts, only: [:index, :create, :destroy], shallow: true do
         resources :comments, only: [:create, :destroy], shallow: true
-
+        resources :likes, only: [:destroy, :create]
     end
   end
 

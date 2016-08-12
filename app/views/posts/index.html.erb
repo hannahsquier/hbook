@@ -15,21 +15,23 @@
             <div class="form-group">
               <label class="col-xs-5 control-label">Birthday</label>
               <div class="col-xs-7">
-                <p class="form-control-static">July 31, 1980</p>
+                <p class="form-control-static">
+                  <%= @profile.birthday.strftime("%B %d, %Y") if @profile.birthday  %>
+                </p>
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-xs-5 control-label">College</label>
               <div class="col-xs-7">
-                <p class="form-control-static">Hogwarts College</p>
+                <p class="form-control-static"><%= @profile.college %></p>
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-xs-5 control-label">Hometown</label>
                 <div class="col-xs-7">
-                  <p class="form-control-static">Godrick's Hollow, England</p>
+                  <p class="form-control-static"><%= @profile.hometown %></p>
                 </div>
               </div>
             </form>
@@ -78,7 +80,7 @@
 
         <!-- posted post -->
           <%= render 'posts' %>
-        <!-- posted post with like -->
+       <!--
         <article class="posted-post row">
           <a href="timeline.html" class="my-thumbnail">
             <%= image_tag "harry_potter_small.jpg" %>
@@ -108,7 +110,6 @@
           </h2>
         </article>
 
-        <!-- posted post you liked -->
         <article class="posted-post">
           <a href="timeline.html" class="my-thumbnail">
             <%= image_tag "harry_potter_small.jpg" %>
@@ -140,7 +141,6 @@
           </h2>
         </article>
 
-          <!-- comment -->
         <article class="comment posted-post row">
           <a href="timeline.html" class="my-thumbnail">
             <%= image_tag "ron-weasley.jpg" %>
@@ -161,7 +161,6 @@
 
         </article>
 
-        <!-- comment -->
 
         <article class="comment posted-post row">
           <a href="timeline.html" class="my-thumbnail">
@@ -188,8 +187,8 @@
           </div>
         </article>
 
-<!--  -->      </div> <!-- end right -->
-
+     </div>
+ -->
       </section> <!-- end timeline -->
     </div> <!-- end container fluid -->
       <!-- Footer -->
