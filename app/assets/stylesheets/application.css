@@ -282,15 +282,17 @@ a.hovertext:hover:after, a.hovertext:focus:after {
   resize:none;}
 #timeline .posted-post .my-thumbnail {
   display: inline-block;
-  clip: rect(0px, 100px, 100px, 0px);
+  clip: rect(0px, 120px, 120px, 0px);
   margin: 10px; }
   #timeline .my-thumbnail img {
     position: absolute;
     width: 60px;
     clip: rect(0px, 60px, 60px, 0px); }
+
 #timeline .posted-post p {
   margin: 20px 10px 10px 10px; }
-#timeline .posted-post a p {
+
+#timeline .posted-post #post-name {
   margin-top: 20px;
   display: inline-block;
   vertical-align: top;
@@ -299,12 +301,14 @@ a.hovertext:hover:after, a.hovertext:focus:after {
 #timeline .posted-post #post-date {
   font-size: 12px;
   color: #555;
-  margin-top: -10px;
+  margin-top: 0px;
   margin-left: 84px; }
 #timeline .posted-post h2 p {
   font-size: 14px;
   display: inline-block;
   margin: 0 5px;
+    margin-left: 20px;
+
   color: #3b5998; }
 
 #timeline .posted-post .liked-this {

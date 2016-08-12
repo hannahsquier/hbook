@@ -1,21 +1,18 @@
 <% post.comments.each do |comment| %>
-        <article class="comment posted-post row">
-          <a href="timeline.html" class="my-thumbnail">
-            <%= image_tag "harry_potter_small.jpg" %>
-          </a>
+  <article class="comment posted-post row">
+    <a class="my-thumbnail"><%= image_tag "harry_potter_small.jpg" %></a>
 
-          <a href="timeline.html"><p>Harry Potter</p></a>
+    <%= link_to comment.author.full_name, user_posts_path(current_user.id), id: "post-name" %>
 
-    <p id="post-date"><%= post.created_at.strftime("%A %B, %d %Y") %></p>
+    <p id="post-date"><%= post.created_at.strftime("%A %B %d, %Y") %></p>
 
-          <p>
-           <%= comment.body %>
-          </p>
 
-          <div class="row">
-     <!--        <div class="col-xs-6"><a href="#" class="action" id="like">Like</a><p class="likes-count">3 other people like this</p></div> -->
+    <p><%= comment.body %></p>
 
-            <%= link_to "Delete", comment_path(comment.id), method: :delete, class: "col-xs-2 pull-right" %>
-         </div>
-        </article>
+    <div class="row">
+    <% if comment.author == current_user %>
+      <%= link_to "Delete", comment_path(comment.id), method: :delete, class: "col-xs-2 pull-right" %>
+    <% end %>
+    </div>
+  </article>
 <% end %>

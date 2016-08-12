@@ -19,8 +19,8 @@
 
 
     <div class="name-container pull-right">
-      <a href="timeline.html" class="name ">
-        <span class="glyphicon glyphicon-user"></span> Harry Potter
+      <a href="#" class="name ">
+        <span class="glyphicon glyphicon-user"></span><%= current_user.full_name %>
       </a>
 
       <%= link_to "Sign Out", session_path, method: :delete %>

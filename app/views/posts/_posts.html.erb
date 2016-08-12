@@ -4,10 +4,10 @@
       <%= image_tag "harry_potter_small.jpg" %>
     </a>
 
-    <%= link_to '<p>Harry Potter</p>'.html_safe, user_posts_path(current_user.id) %>
+    <%= link_to post.author.full_name, user_posts_path(current_user.id), id: "post-name" %>
 
 
-    <p id="post-date"><%= post.created_at.strftime("%A %B, %d %Y") %></p>
+    <p id="post-date"><%= post.created_at.strftime("%A %B %d, %Y") %></p>
 
 
      <p><%= post.body %></p>
@@ -15,11 +15,12 @@
     <div class="row">
       <div class="pull-left"><a href="#" class="col-xs-1" id="like"><p>Like</p></a></div>
 
-<!--       <div class="pull-left"><a href="#" class="col-xs-2" id="like"><p>Comment</p></a></div>
- -->
+    <% if post.author == current_user %>
+
       <div class="pull-right">
         <%= link_to '<p>Delete</p>'.html_safe, post_path(id: post.id), method: :delete, class: 'col-xs-1' %>
       </div>
+    <% end %>
     </div>
   </h2>
 

@@ -13,6 +13,10 @@ class User < ApplicationRecord
   has_many :comments
   has_one :profile
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
   def generate_auth_token
     begin
       self.auth_token = SecureRandom.urlsafe_base64
