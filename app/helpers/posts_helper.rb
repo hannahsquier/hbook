@@ -9,12 +9,13 @@ module PostsHelper
       else
         "#{user.full_name} liked this"
       end
-    elsif likes.length == 2
-      if users.any? { |u| u == current_user }
-        "You and #{users.delete(current_user).first.full_name} liked this"
-      else
-        "#{users.first.full_name} and #{users.second.full_name} liked this"
-      end
+    # elsif likes.length == 2
+    #   if users.any? { |u| u == current_user }
+    #     users.delete(current_user)
+    #     "You and #{users.first.full_name} liked this"
+    #   else
+    #     "#{users.first.full_name} and #{users.second.full_name} liked this"
+    #   end
     else
       "#{users.first.full_name} and #{users.second.full_name} and #{likes.count - 2} others liked this"
 
