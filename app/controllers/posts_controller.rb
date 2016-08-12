@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :require_login
+
   def index
     @post = Post.new
     @comment = Comment.new

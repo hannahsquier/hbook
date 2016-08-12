@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  before_action :require_login, :except => [:new, :create]
+  before_action :user_is_current_user?, only: [:edit, :update]
   def new
     if current_user
       redirect_to user_posts_path(current_user.id)
@@ -54,5 +57,12 @@ class UsersController < ApplicationController
 
   def profile_params
     params.require(:profile).permit(:birthday, :email, :college, :city, :state, :country, :phone, :words_to_live_by, :about_me, :password_confirmation)
+  end
+
+  def user_is_current_user?
+    unless params[:id].to_i == current_user.id
+      flash[:error] = "Not authorized!"
+      redirect_to user_posts_path(current_user.id)
+    end
   end
 end

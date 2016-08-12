@@ -29,4 +29,13 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by_auth_token(cookies[:auth_token]) if cookies[:auth_token]
   end
   helper_method :current_user
+
+
+  def require_login
+    unless current_user
+      flash[:error] = "Not authorized, please sign in!"
+      redirect_to root_path  #< Remember this is a custom route
+    end
+  end
+
 end
