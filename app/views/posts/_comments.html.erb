@@ -13,9 +13,9 @@
           </p>
 
           <div class="row">
-            <div class="col-xs-8"><a href="#" class="action" id="like">Like</a><p class="likes-count">3 other people like this</p></div>
+     <!--        <div class="col-xs-6"><a href="#" class="action" id="like">Like</a><p class="likes-count">3 other people like this</p></div> -->
 
-            <div class=" col-xs-1"><a href="#" class="col-xs-1" id="delete"><p>Delete</p></a></div>
-          </div>
+            <%= link_to "Delete", comment_path(comment.id), method: :delete, class: "col-xs-2 pull-right" %>
+         </div>
         </article>
 <% end %>

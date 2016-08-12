@@ -1,16 +1,18 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root to: "static_pages#home"
+  root to: "users#new"
 
-  resource :session
-  resources :users
-  resources :posts
+  resource :session, only: [:create, :destroy]
 
-  resources :comments
+  resources :users, except: [:destroy, :index], shallow: true do
+    resources :posts, only: [:index, :create, :destroy], shallow: true do
+        resources :comments, only: [:create, :destroy], shallow: true
 
-  get "/home" => "static_pages#home"
+    end
+  end
+
+
   get "/about" => "static_pages#about"
-  get "/timeline" => "static_pages#timeline"
   get "/friends" => "static_pages#friends"
   get "/photos" => "static_pages#photos"
   get "/edit-profile" => "static_pages#edit_profile"

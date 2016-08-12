@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   before_create :generate_auth_token
+  after_create -> {create_profile( email: email, birthday: birthday ) }
+
   has_secure_password
 
   validates :password, length: { minimum: 6, maximum: 20 }, on: :create
@@ -8,6 +10,8 @@ class User < ApplicationRecord
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
 
   has_many :posts
+  has_many :comments
+  has_one :profile
 
   def generate_auth_token
     begin

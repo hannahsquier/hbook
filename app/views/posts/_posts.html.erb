@@ -1,10 +1,10 @@
- <% Post.all.reverse.each do |post| %>
+<% Post.all.reverse.each do |post| %>
  <article class="posted-post">
     <a href="timeline.html" class="my-thumbnail">
       <%= image_tag "harry_potter_small.jpg" %>
     </a>
 
-    <%= link_to '<p>Harry Potter</p>'.html_safe, timeline_path %>
+    <%= link_to '<p>Harry Potter</p>'.html_safe, user_posts_path(current_user.id) %>
 
 
     <p id="post-date"><%= post.created_at.strftime("%A %B, %d %Y") %></p>
@@ -15,17 +15,17 @@
     <div class="row">
       <div class="pull-left"><a href="#" class="col-xs-1" id="like"><p>Like</p></a></div>
 
-      <div class="pull-left"><a href="#" class="col-xs-2" id="like"><p>Comment</p></a></div>
-
+<!--       <div class="pull-left"><a href="#" class="col-xs-2" id="like"><p>Comment</p></a></div>
+ -->
       <div class="pull-right">
-        <%= link_to '<p>Delete</p>'.html_safe, post_path(post.id), method: :delete, class: 'col-xs-1' %>
+        <%= link_to '<p>Delete</p>'.html_safe, post_path(id: post.id), method: :delete, class: 'col-xs-1' %>
       </div>
     </div>
   </h2>
 
  </article>
-<%= render 'comments', post: post %>
+  <%= render 'comments', post: post %>
 
-<%= render 'new_comment_form', post: post %>
- <% end %>
+  <%= render 'new_comment_form', post: post %>
+<% end %>
 

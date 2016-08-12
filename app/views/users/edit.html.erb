@@ -1,0 +1,34 @@
+<%= render 'shared/cover' %>
+
+<%= render 'shared/subnav' %>
+
+  <section  class="content col-xs-12">
+    <h2>Edit Profile</h2>
+
+    <div class="row">
+      <%= form_for @profile, url: { action: "update", controller: "users" },  html: { class: "form-horizontal" } do |f| %>
+
+        <div class="col-xs-12 col-sm-5 col-sm-offset-1 col-xs-offset-1">
+          <%= render 'basic_info', f: f %>
+          <%= render 'contact_info', f: f %>
+
+        </div>
+
+      <div class="col-xs-10  col-sm-5 ">
+        <%= render 'about_me_info', f: f %>
+      </div>
+
+
+      <div class="row">
+
+        <div class="col-xs-2 col-xs-offset-5">
+          <%= f.submit class: "btn btn-primary" %>
+        </div>
+
+      </div>
+    </div>
+    <% end %>
+  </section>
+
+
+<%= render 'shared/footer' %>

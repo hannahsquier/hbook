@@ -4,7 +4,7 @@
 
     <%= image_tag "harry_potter_small.jpg", class: "profile-pic" %>
 
-    <%= link_to  '<p class="edit-profile pull-right">Edit Profile <span class="glyphicon glyphicon-edit"></span></p>'.html_safe, edit_profile_path %>
+    <%= link_to  '<p class="edit-profile pull-right">Edit Profile <span class="glyphicon glyphicon-edit"></span></p>'.html_safe, edit_user_path(current_user) %>
 
   </div>
 </div>

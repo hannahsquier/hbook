@@ -1,20 +1,25 @@
 class PostsController < ApplicationController
+  def index
+    @post = Post.new
+    @comment = Comment.new
+  end
+
   def create
-    @post = Post.new(post_params)
-    @post.author = current_user
+    @post = current_user.posts.build(post_params)
 
     if @post.save
-      redirect_to timeline_path
+      redirect_to user_posts_path(current_user.id)
     else
       errors = @post.errors.full_messages.join(", ")
       flash[:error] = "could not post #{errors}"
-      redirect_to timeline_path
+      redirect_to user_posts_path(current_user.id)
     end
   end
 
   def destroy
+    user_id = Post.find(params[:id]).user_id
     Post.find(params[:id]).destroy
-    redirect_to timeline_path
+    redirect_to user_posts_path(user_id)
   end
 
   private

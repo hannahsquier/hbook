@@ -1,0 +1,70 @@
+<section class="content col-xs-12">
+    <h2>About
+      <%= link_to '<button class="btn btn-primary pull-right btn-edit" id="edit-button" >Edit your Profile</button>'.html_safe, edit_user_path(current_user) %>
+    </h2>
+
+
+      <div class="row">
+        <div class="col-xs-10 col-sm-4 col-sm-offset-1 col-xs-offset-1">
+          <h3>Basic Information</h3>
+
+          <div class="form-horizontal">
+            <div class="form-group">
+              <label class="col-xs-5 control-label">Birthday</label>
+              <div class="col-xs-7">
+                <p class="form-control-static"><%= @profile.birthday.strftime("%B %d, %Y") %></p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-xs-5 control-label">College</label>
+              <div class="col-xs-7">
+                <p class="form-control-static"><%= @profile.college %></p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-xs-5 control-label">Hometown</label>
+              <div class="col-xs-7">
+                <p class="form-control-static"><%= @profile.hometown %></p>
+              </div>
+            </div>
+          </form>
+
+          <h3>Contact Information</h3>
+
+          <form>
+            <div class="form-group">
+              <label class="col-xs-5 control-label">Email</label>
+              <div class="col-xs-7">
+                <p class="form-control-static"><%= @profile.email %></p>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label class="col-xs-5 control-label">Telephone</label>
+              <div class="col-xs-7">
+                <p class="form-control-static"><%= @profile.phone %></p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-xs-10 col-xs-offset-1 col-sm-5 col-sm-offset-1">
+          <h3>Words to Live By</h3>
+          <p>
+            <%= @profile.words_to_live_by %>
+          </p>
+
+          <h3>About Me</h3>
+          <p>
+           <%= @profile.about_me %>
+          </p>
+        </div>
+
+
+      </div>
+    </div>
+  </section>

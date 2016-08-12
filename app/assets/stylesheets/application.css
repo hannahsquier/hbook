@@ -98,7 +98,6 @@ position: absolute;
 top: 63%;
 margin-left: 25px;
 width: 200px;
-clip: rect(0px,200px,200px,0px);
 border: 4px solid #eee;
 z-index: 1;
 }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160811234034) do
+ActiveRecord::Schema.define(version: 20160812162734) do
 
   create_table "comments", force: :cascade do |t|
     t.string   "body"
@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20160811234034) do
     t.string   "commentable_type"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.         "user_id"
+    t.integer  "user_id"
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -29,6 +29,22 @@ ActiveRecord::Schema.define(version: 20160811234034) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.date     "birthday"
+    t.string   "college"
+    t.string   "city"
+    t.string   "country"
+    t.string   "state"
+    t.string   "email"
+    t.string   "phone"
+    t.text     "words_to_live_by"
+    t.text     "about_me"
+    t.integer  "user_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -7,7 +7,7 @@
             class="active"
           <% end %>
         >
-           <%= link_to 'Timeline', timeline_path %>
+           <%= link_to 'Timeline', user_posts_path(current_user.id) %>
         </li>
 
         <li
@@ -15,7 +15,7 @@
             class="active"
           <% end %>
           >
-           <%= link_to 'About', about_path %>
+           <%= link_to 'About', user_path(current_user.id) %>
 
         </li>
 

@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
         sign_in(@user)
       end
       flash[:success] = "You are now signed in."
-      redirect_to timeline_path
+      redirect_to user_posts_path(current_user.id)
 
     else
       flash[:error] = "Invalid email or password."

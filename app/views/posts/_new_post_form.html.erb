@@ -1,7 +1,7 @@
 <article>
   <h2>Post</h2>
 
-  <%= form_for @post do |f| %>
+  <%= form_for [:user, @post] do |f| %>
 
     <%= f.text_area :body, rows: 4, placeholder: "Tell the world something...", class: "form-control" %>
 

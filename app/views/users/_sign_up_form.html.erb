@@ -31,7 +31,6 @@
         </div>
 
         <div class="form-group">
-             <%= f.label :password_confirmation, "Confirm Password" %>
             <%= f.password_field :password_confirmation, id: "ConfirmPassword", class: "form-control", placeholder: "Confirm Password" %>
         </div>
 
@@ -46,10 +45,10 @@
         <div class="form-group">
             <%= f.label :gender, "Male", class: "radio-inline" %>
 
-            <%= f.radio_button :gender, "male" %>
+            <%= f.radio_button :gender, id: "male", value: "male" %>
             <%= f.label :gender, "Female", class: "radio-inline" %>
 
-            <%= f.radio_button :gender, "female" %>
+            <%= f.radio_button :gender, id: "female", value: "female" %>
 
         </div>
         <%= f.submit "Create Account", class: "btn btn-success" %>

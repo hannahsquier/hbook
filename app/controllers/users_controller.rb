@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
   def new
+    if current_user
+      redirect_to user_posts_path(current_user.id)
+    else
+      @user = User.new
+    end
   end
 
   def create
@@ -9,7 +14,7 @@ class UsersController < ApplicationController
       sign_in(@user)
       flash[:success] = "Congrats on making your account!"
 
-      redirect_to timeline_path
+      redirect_to user_posts_path(current_user.id)
     else
       errors = @user.errors.full_messages.join(", ")
       flash[:sorry] = "We could not create an accout. #{errors}"
@@ -18,10 +23,36 @@ class UsersController < ApplicationController
 
   end
 
+  def show
+    @profile = Profile.find_by_user_id(params[:id])
+  end
+
+  def edit
+    @profile = Profile.find_by_user_id(params[:id])
+  end
+
+  def update
+    @profile = Profile.find_by_user_id(params[:id])
+
+    if @profile.update(profile_params)
+      flash[:success] = "You successfully updated your profile."
+      redirect_to user_path(current_user.id)
+
+    else
+      errors = @user.errors.full_messages.join(", ")
+      flash[:sorry] = "We could not update your profile. #{errors}"
+      redirect_to :edit
+    end
+
+  end
+
   private
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :gender, :birthday, :email, :password, :password_confirmation)
+  end
 
+  def profile_params
+    params.require(:profile).permit(:birthday, :email, :college, :city, :state, :country, :phone, :words_to_live_by, :about_me, :password_confirmation)
   end
 end
