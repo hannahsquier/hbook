@@ -1,24 +1,38 @@
 module PostsHelper
   def other_likes(likeable)
+
     likes = likeable.likes
-    users = likes.map { |like| like.liker }
+    likers = likes.map { |like| like.liker }
     return if likes.length < 1
     if likes.length == 1
-      if users.first == current_user
+      if likers.first == current_user
         "You liked this"
       else
-        "#{user.full_name} liked this"
+        "#{likes.first.liker.full_name} liked this"
       end
-    # elsif likes.length == 2
-    #   if users.any? { |u| u == current_user }
-    #     users.delete(current_user)
-    #     "You and #{users.first.full_name} liked this"
-    #   else
-    #     "#{users.first.full_name} and #{users.second.full_name} liked this"
-    #   end
-    else
-      "#{users.first.full_name} and #{users.second.full_name} and #{likes.count - 2} others liked this"
 
+    elsif likes.length == 2
+      if likers.any? { |u| u == current_user }
+        likers.delete(current_user)
+        "You and #{likers.first.full_name} liked this"
+      else
+        "#{likers.first.full_name} and #{likers.second.full_name} liked this"
+      end
+
+    else
+      "#{likers.first.full_name} and #{likers.second.full_name} and #{likes.count - 2} others liked this"
+
+    end
+  end
+
+
+  def current_page_user_id
+
+
+   if params[:user_id]
+      return params[:user_id].to_i
+    else
+      return params[:id].to_i
     end
   end
 

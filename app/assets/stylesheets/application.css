@@ -95,11 +95,19 @@ font-size: 28px; }
 
 .profile-pic {
 position: absolute;
-top: 63%;
+top: 45%;
 margin-left: 25px;
 width: 200px;
 border: 4px solid #eee;
 z-index: 1;
+}
+
+#cover-name {
+position: absolute;
+top: 80%;
+margin-left: 270px;
+color: white;
+z-index: 2;
 }
 
 .edit-profile {
@@ -120,12 +128,19 @@ z-index: 2;
   top: 80%;
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 850px) {
 .profile-pic {
   margin-left: 5px;
   width: 180px;
+  top: 60%;
   clip: rect(0px,200px,200px,0px);}
+
+  #cover-name {
+      margin-left: 5px;
+      top: 20%;
+  }
 }
+
 
 @media only screen and (max-width: 768px) {
 .profile-pic {
@@ -140,6 +155,17 @@ z-index: 2;
   clip: rect(0px,160px,160px,0px);}
 }
 
+@media only screen and (max-width: 600px) {
+.profile-pic {
+  top: 80%;
+  width: 160px;
+  clip: rect(0px,160px,160px,0px);}
+
+  #cover-name {
+    top: 40%;
+
+  }
+}
 
 .sub-nav {
   border: solid #eee 2px;
@@ -221,13 +247,13 @@ a.hovertext:hover:after, a.hovertext:focus:after {
       margin-top: 10px;
     }
 
-   .friend p {
+   .friend #friend-num #friend-name {
       margin-top: 30%;
       margin-bottom: -60px;
     }
 
 @media only screen and (max-width: 600px) {
-   .friend p {
+   .friend #friend-num {
       margin-top: 10%;}
 
   #friend-num {
@@ -410,4 +436,8 @@ footer p {
   height: 20px;
   line-height: 20px;
   padding: 0;
+}
+
+.all-users {
+  margin-top: 100px;
 }

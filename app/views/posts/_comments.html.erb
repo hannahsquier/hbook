@@ -11,7 +11,7 @@
 
     <div class="row">
     <% if comment.author == current_user %>
-      <%= link_to "Delete", comment_path(comment.id), method: :delete, class: "col-xs-2 pull-right" %>
+      <%= link_to "Delete", comment_path(comment.id), method: :delete, class: "col-xs-2 pull-right", id: "delete-comment" %>
     <% end %>
     </div>
   </article>

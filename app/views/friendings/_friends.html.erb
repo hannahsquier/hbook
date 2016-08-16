@@ -1,0 +1,28 @@
+<% @friends.each_with_index do |friend, i| %>
+  <article class="col-xs-offset-1 col-xs-10
+
+    <% if i.even? %>
+      col-lg-offset-1
+    <% else %>
+      col-lg-offset-0
+    <% end %>
+      col-lg-5 friend">
+
+    <div class="row">
+      <div class="col-xs-4">
+        <%= image_tag "user_silhouette_generic.jpg" %>
+      </div>
+
+      <div class="col-xs-5">
+        <%= link_to friend.full_name, user_posts_path(user_id: friend.id), id: "friend_name" %>
+        <br>
+        <% friend_count = Friending.where(friender_id: friend.id).count %>
+        <%= link_to friend_count, user_friendings_path(user_id: friend.id), id: "friend-num" %>
+      </div>
+
+      <div class="col-xs-3">
+        <%= link_to '<button class="btn btn-success" id="unfriend">Unfriend</button>'.html_safe, friending_path(friend.id), method: :delete %>
+      </div>
+    </div>
+  </article>
+<% end %>

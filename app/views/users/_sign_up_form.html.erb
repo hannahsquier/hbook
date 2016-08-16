@@ -43,14 +43,14 @@
 
 
         <div class="form-group">
-            <%= f.label :gender, "Male", class: "radio-inline" %>
+            <%= f.label :gender, "Male", class: "radio-inline", id: "male" %>
 
             <%= f.radio_button :gender, "male" %>
-            <%= f.label :gender, "Female", class: "radio-inline" %>
+            <%= f.label :gender, "Female", class: "radio-inline", id: "female" %>
 
             <%= f.radio_button :gender, "female"  %>
 
-            <%= f.label :gender, "Other", class: "radio-inline" %>
+            <%= f.label :gender, "Other", class: "radio-inline", id: "other" %>
             <%= f.radio_button :gender, "other"  %>
 
         </div>

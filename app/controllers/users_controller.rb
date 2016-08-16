@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
 
-  before_action :require_login, :except => [:new, :create]
+  before_action :require_login, except: [:new, :create]
   before_action :user_is_current_user?, only: [:edit, :update]
+
+  def index
+    @users = User.all
+  end
+
   def new
     if current_user
       redirect_to user_posts_path(current_user.id)

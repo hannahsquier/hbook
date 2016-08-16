@@ -21,10 +21,19 @@ class User < ApplicationRecord
       user.errors.add(birthday, 'must be less than 125 years in the past')
     end
   end
+
   has_many :posts
   has_many :comments
   has_one :profile, inverse_of: :user
   has_many :likes, foreign_key: "liker_id"
+
+  # When acting as the initiator of the friending
+  has_many :initiated_friendings, foreign_key: :friender_id, class_name: "Friending"
+  has_many :friended_users, through: :initiated_friendings, source: :friend_recipient
+
+  # When acting as person friended
+  has_many :received_friendings, foreign_key: :friended_id, class_name: "Friending"
+  has_many :users_friended_by, through: :received_friendings, source: :friend_initiator
 
   accepts_nested_attributes_for :profile
 

@@ -1,0 +1,30 @@
+<div class="all-users">
+  <h1 class="text-center">Users</h1>
+<% @users.each do |user| %>
+
+  <article class="col-xs-offset-2 col-xs-8 friend">
+
+      <div class="row">
+        <div class="col-xs-4">
+          <%= image_tag "user_silhouette_generic.jpg" %>
+        </div>
+
+        <div class="col-xs-5">
+          <%= link_to user.full_name, user_posts_path(user_id: user.id), id: "friend_name" %>
+          <br>
+          <% friend_count = Friending.where(friender_id: user.id).count %>
+          <%= link_to friend_count, user_friendings_path(user_id: user.id), id: "friend-num" %>
+        </div>
+
+        <div class="col-xs-3">
+          <% if Friending.where(friender_id: current_user.id, friended_id: user.id).first %>
+            <%= link_to '<button class="btn btn-danger" id="unfriend">Unfriend</button>'.html_safe, friending_path(user.id), method: :delete %>
+          <% else %>
+            <%= link_to '<button class="btn btn-success" id="unfriend">Friend</button>'.html_safe, user_friendings_path(user.id), method: :post  %>
+          <% end %>
+        </div>
+      </div>
+    </article>
+
+<% end %>
+</div>

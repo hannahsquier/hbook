@@ -24,7 +24,7 @@
     <% if post.author == current_user %>
 
       <div class="pull-right">
-        <%= link_to '<p>Delete</p>'.html_safe, post_path(id: post.id), method: :delete, class: 'col-xs-1' %>
+        <%= link_to '<p>Delete</p>'.html_safe, post_path(id: post.id), method: :delete, class: 'col-xs-1', id: "delete-post" %>
       </div>
     <% end %>
     </div>

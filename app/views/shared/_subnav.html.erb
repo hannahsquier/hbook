@@ -1,3 +1,9 @@
+<% if params[:user_id] %>
+  <% user_id = params[:user_id] %>
+<% else %>
+   <% user_id = params[:id] %>
+<% end %>
+
 <div class="row">
    <div class=" col-xs-12 sub-nav">
     <div class="col-xs-offset-7 col-sm-offset-5 col-lg-offset-3 col-xs-6 col-sm-8 col-lg-9">
@@ -7,7 +13,7 @@
             class="active"
           <% end %>
         >
-           <%= link_to 'Timeline', user_posts_path(current_user.id) %>
+           <%= link_to 'Timeline', user_posts_path(current_page_user_id) %>
         </li>
 
         <li
@@ -15,7 +21,7 @@
             class="active"
           <% end %>
           >
-           <%= link_to 'About', user_path(current_user.id) %>
+           <%= link_to 'About', user_path(current_page_user_id) %>
 
         </li>
 
@@ -33,7 +39,7 @@
             class="friends"
           <% end %>
           >
-          <%= link_to 'Friends <span class="badge">310</span>'.html_safe, friends_path %>
+          <%= link_to 'Friends <span class="badge">310</span>'.html_safe, user_friendings_path(current_page_user_id) %>
 
         </li>
 

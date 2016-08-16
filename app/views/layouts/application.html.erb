@@ -33,12 +33,12 @@
     <% flash.each do |type, message| %>
 
       <% if type == "sorry" || type == "error" %>
-        <div class="alert alert-danger">
+        <div class="alert alert-danger" id="error-flash">
           <strong><%= type.capitalize %>! <%= message %></strong>
         </div>
 
       <% else %>
-        <div class="alert alert-success">
+        <div class="alert alert-success", id="success-flash">
           <strong><%= type.capitalize %>! <%= message %></strong>
         </div>
 
