@@ -6,27 +6,40 @@
     <h2>Edit Profile</h2>
 
     <div class="row">
-      <%= form_for @profile, url: { action: "update", controller: "users" },  html: { class: "form-horizontal" } do |f| %>
+      <%= form_for @user, url: { action: "update", controller: "users" },  html: { class: "form-horizontal" } do |user_fields| %>
 
         <div class="col-xs-12 col-sm-5 col-sm-offset-1 col-xs-offset-1">
-          <%= render 'basic_info', f: f %>
-          <%= render 'contact_info', f: f %>
+          <h3>Basic Information</h3>
+
+          <div class="form-group">
+            <div class="col-xs-3">
+
+              <%= user_fields.label :birthday, class: "control-label" %>
+            </div>
+
+            <div class="col-xs-8">
+              <%= user_fields.date_field :birthday, class: "form-control" %>
+            </div>
+          </div>
+          <%= user_fields.fields_for :profile do |profile_fields| %>
+            <%= render 'basic_info', profile_fields: profile_fields %>
+            <%= render 'contact_info', profile_fields: profile_fields, user_fields: user_fields %>
+
+          </div>
+
+          <div class="col-xs-10  col-sm-5 ">
+            <%= render 'about_me_info', profile_fields: profile_fields %>
+          </div>
+
+          <% end %>
+        <div class="row">
+
+          <div class="col-xs-2 col-xs-offset-5">
+            <%= user_fields.submit class: "btn btn-primary" %>
+          </div>
 
         </div>
-
-      <div class="col-xs-10  col-sm-5 ">
-        <%= render 'about_me_info', f: f %>
       </div>
-
-
-      <div class="row">
-
-        <div class="col-xs-2 col-xs-offset-5">
-          <%= f.submit class: "btn btn-primary" %>
-        </div>
-
-      </div>
-    </div>
     <% end %>
   </section>
 

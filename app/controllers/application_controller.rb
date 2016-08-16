@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
   def require_login
     unless current_user
       flash[:error] = "Not authorized, please sign in!"
-      redirect_to root_path  #< Remember this is a custom route
+      redirect_to root_path
     end
   end
 

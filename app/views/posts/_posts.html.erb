@@ -1,4 +1,4 @@
-<% Post.all.reverse.each do |post| %>
+<% @user.posts.all.reverse.each do |post| %>
  <article class="posted-post">
     <a href="timeline.html" class="my-thumbnail">
       <%= image_tag "harry_potter_small.jpg" %>

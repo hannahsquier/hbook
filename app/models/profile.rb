@@ -1,5 +1,5 @@
 class Profile < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, inverse_of: :profile
 
 
   def hometown

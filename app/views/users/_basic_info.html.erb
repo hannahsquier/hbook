@@ -1,49 +1,38 @@
-<h3>Basic Information</h3>
 
 <div class="form-group">
   <div class="col-xs-3">
-    <%= f.label :birthday, class: "control-label" %>
+      <%= profile_fields.label :college, class: "control-label" %>
   </div>
 
   <div class="col-xs-8">
-    <%= f.date_field :birthday, class: "form-control" %>
+    <%= profile_fields.text_field :college, class: "form-control" %>
   </div>
 </div>
 
 <div class="form-group">
   <div class="col-xs-3">
-      <%= f.label :college, class: "control-label" %>
-  </div>
-
-  <div class="col-xs-8">
-    <%= f.text_field :college, class: "form-control" %>
-  </div>
-</div>
-
-<div class="form-group">
-  <div class="col-xs-3">
-      <%= f.label :city, class: "control-label" %>
+      <%= profile_fields.label :city, class: "control-label" %>
   </div>
 
   <div class="col-xs-4">
-    <%= f.text_field :city, class: "form-control" %>
+    <%= profile_fields.text_field :city, class: "form-control" %>
   </div>
 
    <div class="col-xs-1">
-      <%= f.label :state, class: "control-label" %>
+      <%= profile_fields.label :state, class: "control-label" %>
   </div>
 
   <div class="col-xs-3">
-    <%= f.text_field :state, class: "form-control" %>
+    <%= profile_fields.text_field :state, class: "form-control" %>
   </div>
 </div>
 
 <div class="form-group">
   <div class="col-xs-3">
-      <%= f.label :country, class: "control-label" %>
+      <%= profile_fields.label :country, class: "control-label" %>
   </div>
 
   <div class="col-xs-8">
-    <%= f.text_field :country, class: "form-control" %>
+    <%= profile_fields.text_field :country, class: "form-control" %>
   </div>
 </div>

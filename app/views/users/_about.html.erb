@@ -12,7 +12,11 @@
             <div class="form-group">
               <label class="col-xs-5 control-label">Birthday</label>
               <div class="col-xs-7">
-                <p class="form-control-static"><%= @profile.birthday.strftime("%B %d, %Y") %></p>
+                <p class="form-control-static">
+                <% if @profile.user.birthday %>
+                    <%= @profile.user.birthday.strftime("%B %d, %Y") %>
+                  <% end %>
+                </p>
               </div>
             </div>
 
@@ -37,7 +41,7 @@
             <div class="form-group">
               <label class="col-xs-5 control-label">Email</label>
               <div class="col-xs-7">
-                <p class="form-control-static"><%= @profile.email %></p>
+                <p class="form-control-static"><%= @profile.user.email %></p>
               </div>
             </div>
 

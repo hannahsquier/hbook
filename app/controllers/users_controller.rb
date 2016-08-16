@@ -21,30 +21,32 @@ class UsersController < ApplicationController
     else
       errors = @user.errors.full_messages.join(", ")
       flash[:sorry] = "We could not create an accout. #{errors}"
-      redirect_to root_path
+      render :new
     end
 
   end
 
   def show
-    @profile = Profile.find_by_user_id(params[:id])
+    @profile = User.find(params[:id]).profile
+    #@profile = Profile.find_by_user_id(params[:id])
   end
 
   def edit
-    @profile = Profile.find_by_user_id(params[:id])
+    @user = User.find(params[:id])
+    @profile = @user.build_profile
   end
 
   def update
-    @profile = Profile.find_by_user_id(params[:id])
+    @user = User.find(params[:id])
 
-    if @profile.update(profile_params)
+    if @user.update(user_params)
       flash[:success] = "You successfully updated your profile."
       redirect_to user_path(current_user.id)
 
     else
       errors = @user.errors.full_messages.join(", ")
       flash[:sorry] = "We could not update your profile. #{errors}"
-      redirect_to :edit
+      render :edit
     end
 
   end
@@ -52,12 +54,9 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :gender, :birthday, :email, :password, :password_confirmation)
+    params.require(:user).permit(:first_name, :last_name, :gender, :birthday, :email, :password, :password_confirmation, profile_attributes: [:email, :college, :city, :state, :country, :phone, :words_to_live_by, :about_me, :password_confirmation])
   end
 
-  def profile_params
-    params.require(:profile).permit(:birthday, :email, :college, :city, :state, :country, :phone, :words_to_live_by, :about_me, :password_confirmation)
-  end
 
   def user_is_current_user?
     unless params[:id].to_i == current_user.id

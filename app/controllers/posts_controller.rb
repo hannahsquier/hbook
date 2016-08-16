@@ -2,13 +2,14 @@ class PostsController < ApplicationController
   before_action :require_login
 
   def index
-    @profile = Profile.find_by_user_id(params[:user_id])
+    @user = User.find(params[:user_id])
+    @profile = @user.profile
     @post = Post.new
     @comment = Comment.new
   end
 
   def create
-    @post = current_user.posts.build(post_params)
+    @post = User.find(params[:user_id]).posts.build(post_params)
     @post.receiver_id = params[:user_id]
 
     if @post.save

@@ -16,7 +16,9 @@
               <label class="col-xs-5 control-label">Birthday</label>
               <div class="col-xs-7">
                 <p class="form-control-static">
-                  <%= @profile.birthday.strftime("%B %d, %Y") if @profile.birthday  %>
+              <% if @profile.user.birthday %>
+                  <%= @profile.user.birthday.strftime("%B %d, %Y")  %>
+                <% end %>
                 </p>
               </div>
             </div>
