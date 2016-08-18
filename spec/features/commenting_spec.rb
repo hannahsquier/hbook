@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 feature "commenting" do
   let(:user) { create(:user) }
   let(:other_user) { create(:user) }
@@ -18,6 +20,7 @@ feature "commenting" do
 
   # scenario "user can post on someone elses timeline and is redirected to their timeline" do
   #   login(user.email)
+  #   visit user_posts_path(other_user.id)
   #   body = Faker::Lorem.paragraph
   #   fill_in "new-post", with: body
   #   click_button "Post"
@@ -35,7 +38,7 @@ feature "commenting" do
 
   scenario "can't comment if there is nothing to comment on" do
     login(user.email)
-    expect { new_comment }.to raise_error
+    expect(page).to_not have_css("article.comment")
   end
 
   scenario "user can delete own post" do
@@ -49,14 +52,13 @@ feature "commenting" do
 
   end
 
-  scenario "user can't delete someone elses post" do
+  scenario "user can't delete someone elses comments" do
     login(user.email)
     new_post
     new_comment
     logout
     login(other_user.email)
     visit user_posts_path(user.id)
-    save_and_open_page
     expect(page).to have_css("article.comment")
     expect(page).to_not have_css("a.delete-comment")
 

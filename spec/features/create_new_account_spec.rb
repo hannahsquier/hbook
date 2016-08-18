@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 feature "create new user"  do
 
   scenario "user is redirected to timeline when creating new account with valid data" do

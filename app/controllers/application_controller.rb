@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  before_action :store_referer
 
   private
   # switched to cookies-based from session-based
@@ -36,6 +37,16 @@ class ApplicationController < ActionController::Base
       flash[:error] = "Not authorized, please sign in!"
       redirect_to root_path
     end
+  end
+
+
+  def store_referer
+    session.delete(:referer)
+    session[:referer] = URI(request.referer).path if request.referer
+  end
+
+  def referer
+    session.delete(:referer)
   end
 
 end

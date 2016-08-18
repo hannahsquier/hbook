@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 feature "posting" do
   let(:user) { create(:user) }
   let(:other_user) { create(:user) }

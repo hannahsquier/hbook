@@ -247,10 +247,9 @@ a.hovertext:hover:after, a.hovertext:focus:after {
       margin-top: 10px;
     }
 
-   .friend #friend-num #friend-name {
-      margin-top: 30%;
-      margin-bottom: -60px;
-    }
+ .friend-info {
+  margin-top: 10%; 
+ }
 
 @media only screen and (max-width: 600px) {
    .friend #friend-num {
@@ -423,6 +422,7 @@ footer p {
 #sign-up-form h2 {
   font-size: 48px;
   margin-bottom: 10%; }
+
 #sign-up-form button {
   width: 90%;
   margin-left: 5%;

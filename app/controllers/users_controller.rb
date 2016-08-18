@@ -16,29 +16,32 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-
-    if @user.save
-      sign_in(@user)
-      flash[:success] = "Congrats on making your account!"
-
+    if current_user
       redirect_to user_posts_path(current_user.id)
     else
-      errors = @user.errors.full_messages.join(", ")
-      flash[:sorry] = "We could not create an accout. #{errors}"
-      render :new
+      @user = User.new(user_params)
+
+      if @user.save
+        sign_in(@user)
+        flash[:success] = "Congrats on making your account!"
+
+        redirect_to user_posts_path(current_user.id)
+      else
+        errors = @user.errors.full_messages.join(", ")
+        flash[:sorry] = "We could not create an accout. #{errors}"
+        render :new
+      end
     end
 
   end
 
   def show
     @profile = User.find(params[:id]).profile
-    #@profile = Profile.find_by_user_id(params[:id])
   end
 
   def edit
     @user = User.find(params[:id])
-    @profile = @user.build_profile
+    @profile = @user.profile
   end
 
   def update
@@ -59,7 +62,12 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :gender, :birthday, :email, :password, :password_confirmation, profile_attributes: [:email, :college, :city, :state, :country, :phone, :words_to_live_by, :about_me, :password_confirmation])
+    params.require(:user).permit(:first_name, :last_name, 
+                                  :gender, :birthday, :email, :password,
+                                   :password_confirmation, profile_attributes: 
+                                   [:college, :city, :state, :country, :phone, 
+                                    :words_to_live_by, :about_me, 
+                                    :password_confirmation])
   end
 
 

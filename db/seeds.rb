@@ -58,8 +58,11 @@ Post.all.each do |p|
     p.comments << Comment.new(body: Faker::Hipster.paragraph, user_id: User.pluck(:id).sample)
   end
 
-  (0..10).to_a.sample.times do
-    p.likes << Like.new(liker_id: User.pluck(:id).sample)
+  (0..5).to_a.sample.times do
+    possible_likers = User.pluck(:id)
+    liker = possible_likers.sample
+    possible_likers.delete(liker)
+    p.likes << Like.new(liker_id: liker)
   end
 
 end

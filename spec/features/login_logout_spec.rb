@@ -1,4 +1,4 @@
-
+require 'rails_helper'
 feature "can login and logout" do
   let(:user) { create(:user) }
 

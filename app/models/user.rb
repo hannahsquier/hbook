@@ -7,7 +7,11 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6, maximum: 20 }, on: :create
   validates :first_name, presence: true, on: :create
   validates :last_name, presence: true, on: :create
-  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }, uniqueness: true
+  
+  validates :email, 
+            format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, 
+                      on: :create }, uniqueness: true
+
   validates :gender, allow_nil:true, inclusion: { in: %w(male female other) }
 
   validates_each :birthday do |user, birthday, value|
@@ -32,10 +36,16 @@ class User < ApplicationRecord
   has_many :friended_users, through: :initiated_friendings, source: :friend_recipient
 
   # When acting as person friended
-  has_many :received_friendings, foreign_key: :friended_id, class_name: "Friending"
-  has_many :users_friended_by, through: :received_friendings, source: :friend_initiator
+  has_many :received_friendings, 
+            foreign_key: :friended_id, 
+            class_name: "Friending"
 
-  accepts_nested_attributes_for :profile
+  has_many :users_friended_by, 
+          through: :received_friendings, 
+          source: :friend_initiator
+
+  accepts_nested_attributes_for :profile, 
+                                reject_if: :new_record?, update_only: true
 
   def full_name
     "#{first_name} #{last_name}"

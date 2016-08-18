@@ -1,0 +1,33 @@
+<%= render 'shared/cover' %>
+
+<%= render 'shared/subnav' %>
+
+<!-- photos -->
+<main class="row">
+  <section class="col-xs-12 content">
+    <h2>Photos
+
+  <% if params[:user_id].to_i == current_user.id %>
+      <%= link_to '<button class="btn btn-primary btn-photo pull-right" id="add-photo">Add Photo</button>'.html_safe, new_user_photo_path(current_user.id) %> 
+    <% end %>
+    </h2>
+
+    <section class="row">
+      
+      <% @photos.each do |photo| %>
+      <article id="photo" class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <p>
+          <a class="hovertext" href="#" title="Uploaded January 1, 2016">
+             <%=image_tag photo.file.url, class: "photo" %>
+
+          </a>
+        </p>
+      </article>
+      <% end %>
+
+    </section>
+  </section>
+
+</main>
+
+<%= render 'shared/footer' %>
