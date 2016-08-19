@@ -1,14 +1,28 @@
+
+
  <div class="row">
   <div class="cover-photo-div col-xs-10 col-xs-offset-1">
-    <%= image_tag "hogwarts_small.jpg", class: "cover-photo" %>
+    <% if get_cover_photo %>
+       <%= image_tag get_cover_photo.file.url, class: "cover-photo" %>
+    <% else %>
+      <%= image_tag "default_cover_photo.jpg", class: "cover-photo" %>
+    <% end %>
 
-    <%= image_tag "harry_potter_small.jpg", class: "profile-pic" %>
+
+    <% if get_profile_photo %>
+        <%= image_tag get_profile_photo.file.url, class: "profile-pic" %>
+    <% else %>
+        <%= image_tag "default_profile_photo.jpg", class: "profile-pic" %>
+    <% end %>
+ 
+
+    
 
     <h1 id="cover-name"><%= User.find(current_page_user_id).full_name %></h1>
-  <% if params[:user_id].to_i == current_user.id %>
-    <%= link_to  '<p class="edit-profile pull-right">Edit Profile <span class="glyphicon glyphicon-edit"></span></p>'.html_safe, edit_user_path(current_user) %>
-  <% else %>
-   <%= link_to  '<p class="edit-profile pull-right">Add Friend<span class="glyphicon glyphicon-edit"></span></p>'.html_safe, user_friendings_path(current_page_user_id), method: :post %>
-  <% end %>
+      <% if current_page_user_id == current_user.id %>
+        <%= link_to  '<p class="edit-profile pull-right">Edit Profile <span class="glyphicon glyphicon-edit"></span></p>'.html_safe, edit_user_path(current_user) %>
+      <% elsif !current_user.friended_users.include?(User.find(current_page_user_id)) %>
+       <%= link_to  '<p class="edit-profile pull-right">Add Friend<span class="glyphicon glyphicon-edit"></span></p>'.html_safe, user_friendings_path(current_page_user_id), method: :post %>
+      <% end %>
   </div>
 </div>

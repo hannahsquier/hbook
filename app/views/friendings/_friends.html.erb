@@ -10,7 +10,13 @@
 
     <div class="row">
       <div class="col-xs-4">
-        <%= image_tag "user_silhouette_generic.jpg" %>
+
+      <% if friend.profile.profile_photo %>
+        <%= image_tag friend.profile.profile_photo.file.url, class: "friend" %>
+      <% else %>
+        <%= image_tag "default_profile_photo.jpg", class: "friend" %>
+
+      <% end %>
       </div>
 
       <div class="friend-info col-xs-5">
@@ -21,9 +27,11 @@
         <p id="friend-num"><%= link_to friend_count, user_friendings_path(user_id: friend.id), id: "friend-num" %> Friends</p>
       </div>
 
-      <div class="col-xs-3">
-        <%= link_to '<button class="btn btn-success" id="unfriend">Unfriend</button>'.html_safe, friending_path(friend.id), method: :delete %>
-      </div>
+      <% if params[:user_id].to_i == current_user.id %>
+        <div class="col-xs-3">
+          <%= link_to '<button class="btn btn-success" id="unfriend">Unfriend</button>'.html_safe, friending_path(friend.id), method: :delete %>
+        </div>
+      <% end %>
     </div>
   </article>
 <% end %>

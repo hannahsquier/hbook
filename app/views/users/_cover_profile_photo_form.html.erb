@@ -1,0 +1,20 @@
+<div class="row">
+      
+  <%= form_for @user, url: { action: "update", controller: "users" , id: @user.id},  html: { class: "form-horizontal" } do |user_fields| %>
+
+    
+    <%= user_fields.fields_for :profile do |profile_fields| %> 
+        <% @photos.each do |photo| %>
+
+          <%=image_tag photo.file.url %>
+          <%= profile_fields.radio_button fk, photo.id %>
+        <% end %>
+    <% end %>
+
+    <div class="row">
+      <div class="col-xs-2 col-xs-offset-5">
+        <%= user_fields.submit class: "btn btn-primary" %>
+      </div>
+    <% end %>
+    </div>
+</div>

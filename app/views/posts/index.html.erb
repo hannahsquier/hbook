@@ -5,7 +5,7 @@
       <!-- Timeline -->
       <section id="timeline">
 
-        <div class="left col-xs-12 col-sm-5">
+        <div class="left col-xs-12 col-sm-4 col-sm-offset-1">
 
           <!-- About -->
           <article>
@@ -55,27 +55,12 @@
 
             <!-- Friends -->
 
-          <article class="friends">
-            <h2>Friends (310)</h2>
-            <% 9.times do %>
-              <div class="friend-div">
-                <%= image_tag "user_silhouette_generic.jpg", class: "friend" %>
-                <p>First Last</p>
-              </div>
-            <% end %>
-
-
-             <div class="row">
-                <div class="col-xs-12">
-                  <a href="friends.html">See more friends</a>
-                </div>
-              </div>
-          </article>
+        <%= render 'timeline_friends' %>
         </div> <!-- end left -->
 
 
         <!-- right -->
-        <div id="right" class="col-xs-12  col-sm-7">
+        <div id="right" class="col-xs-12  col-sm-6">
           <!-- create post -->
           <%= render 'new_post_form' %>
 

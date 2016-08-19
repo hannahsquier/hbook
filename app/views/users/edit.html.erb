@@ -4,12 +4,13 @@
 
 
 
-  <section  class="content col-xs-12">
+  <section  class="content col-xs-10 col-xs-offset-1">
     <h2>Edit Profile</h2>
 
     <div class="row">
 
       <%= link_to "Edit Cover Photo", user_cover_photo_path(current_user.id) %>
+      <%= link_to "Edit Profile Picture", user_profile_photo_path(current_user.id) %>
 
       <%= form_for @user, url: { action: "update", controller: "users" },  html: { class: "form-horizontal" } do |user_fields| %>
 

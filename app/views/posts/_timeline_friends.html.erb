@@ -1,0 +1,22 @@
+ <article class="friends">
+  <h2>Friends (310)</h2>
+  <% @user.friended_users.limit(9).each do |friend| %>
+    <div class="friend-div">
+
+      <% if friend.profile.profile_photo %>
+        <%= image_tag friend.profile.profile_photo.file.url, class: "friend" %>
+      <% else %>
+        <%= image_tag "default_profile_photo.jpg", class: "friend" %>
+
+      <% end %>
+      <p><%= friend.full_name %></p>
+    </div>
+  <% end %>
+
+
+   <div class="row">
+      <div class="col-xs-12">
+        <%= link_to "See more friends", user_friendings_path(params[:user_id]) %>
+      </div>
+    </div>
+</article>

@@ -49,7 +49,7 @@ class User < ApplicationRecord
                                 reject_if: :new_record?, update_only: true
 
   def full_name
-    "#{first_name} #{last_name}"
+    "#{first_name.titleize} #{last_name.titleize}"
   end
 
   def generate_auth_token
