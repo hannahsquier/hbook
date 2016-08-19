@@ -11,6 +11,9 @@ Rails.application.configure do
 
   # Show full error reports.
   config.consider_all_requests_local = true
+  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.default_url_options = { :host => "localhost:3000" }
+
 
   # Enable/disable caching. By default caching is disabled.
   if Rails.root.join('tmp/caching-dev.txt').exist?
@@ -49,6 +52,16 @@ Rails.application.configure do
       :access_key_id => Rails.application.secrets.aws_access_key_id,
       :secret_access_key => Rails.application.secrets.aws_secret_access_key
     }
+  }
+
+   config.action_mailer.smtp_settings = {
+    address: 'smtp.gmail.com',
+    port: 587,
+    domain: 'gmail.com',
+    user_name: Rails.application.secrets.mailer_email,
+    password: Rails.application.secrets.mailer_password,
+    authentication: 'plain',
+    enable_starttls_auto: true  
   }
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false

@@ -18,7 +18,8 @@ gem 'coffee-rails', '~> 4.2'
 gem 'paperclip'
 gem 'figaro'
 gem 'aws-sdk'
-
+gem 'letter_opener', group: :development
+gem 'delayed_job_active_record'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

@@ -3,5 +3,6 @@ class Photo < ApplicationRecord
 	validates_attachment_content_type :file, :content_type => /\Aimage\/.*\Z/
 
 	belongs_to :user
+	
 end
 

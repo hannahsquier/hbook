@@ -1,6 +1,13 @@
 <% post.comments.each do |comment| %>
   <article class="comment posted-post row">
-    <a class="my-thumbnail"><%= image_tag "harry_potter_small.jpg" %></a>
+    <a class="my-thumbnail">
+      <% if post.author.profile.profile_photo %>
+        <%= image_tag post.author.profile.profile_photo.file.url, class: "friend" %>
+      <% else %>
+        <%= image_tag "default_profile_photo.jpg", class: "friend" %>
+
+      <% end %>
+   </a>
 
     <%= link_to comment.author.full_name, user_posts_path(current_user.id), id: "post-name" %>
 

@@ -41,21 +41,10 @@
 
           <!-- Photos -->
 
-          <article class="photos">
-            <h2>Photos (1310)</h2>
-
-            <% 9.times do %>
-              <%= image_tag "icon_photo_small.jpg", class: "photo" %>
-
-            <% end %>
-
-
-            <div class="row"><a href="photos.html">See more photos</a></div>
-          </article>
-
+         
             <!-- Friends -->
-
-        <%= render 'timeline_friends' %>
+         <%= render 'timeline_photos' %>
+          <%= render 'timeline_friends' %>
         </div> <!-- end left -->
 
 

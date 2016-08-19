@@ -1,7 +1,8 @@
 class User < ApplicationRecord
   before_create :generate_auth_token
   after_create -> { create_profile }
-
+  after_create :queue_welcome_email
+  
   has_secure_password
 
   validates :password, length: { minimum: 6, maximum: 20 }, on: :create
@@ -63,6 +64,17 @@ class User < ApplicationRecord
     generate_auth_token
     save
   end
+
+  def queue_welcome_email
+    User.delay.send_welcome_email(id)
+  end
+
+  def self.send_welcome_email(user_id)
+
+    UserMailer.welcome(User.find(user_id)).deliver_now!
+
+  end
+
 
 
   private

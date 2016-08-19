@@ -1,0 +1,9 @@
+<h1>Welcome!</h1>
+
+<p>
+  Hi <%= @user.first_name.titleize %>, welcome to HBook!
+</p>
+
+<p>
+  View your account at <%= link_to "#{user_url(@user.id)}", user_url(@user.id) %>
+</p>

@@ -1,7 +1,12 @@
 <% @user.posts.all.reverse.each do |post| %>
  <article class="posted-post">
     <a href="timeline.html" class="my-thumbnail">
-      <%= image_tag "harry_potter_small.jpg" %>
+      <% if post.author.profile.profile_photo %>
+        <%= image_tag post.author.profile.profile_photo.file.url, class: "friend" %>
+      <% else %>
+        <%= image_tag "default_profile_photo.jpg", class: "friend" %>
+
+      <% end %>
     </a>
 
     <%= link_to post.author.full_name, user_posts_path(current_user.id), id: "post-name" %>

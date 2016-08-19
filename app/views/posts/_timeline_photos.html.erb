@@ -1,0 +1,11 @@
+<article class="photos">
+ 	<h2>Photos (1310)</h2>
+	<% @user.photos.limit(9).each do |photo| %>
+    
+    <%= image_tag photo.file.url, class: "photo" %>
+
+  <% end %>
+
+
+  <div class="row"><a href="photos.html">See more photos</a></div>
+</article>
