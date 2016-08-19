@@ -2,10 +2,15 @@
 
 <%= render 'shared/subnav' %>
 
+
+
   <section  class="content col-xs-12">
     <h2>Edit Profile</h2>
 
     <div class="row">
+
+      <%= link_to "Edit Cover Photo", user_cover_photo_path(current_user.id) %>
+
       <%= form_for @user, url: { action: "update", controller: "users" },  html: { class: "form-horizontal" } do |user_fields| %>
 
         <div class="col-xs-12 col-sm-5 col-sm-offset-1 col-xs-offset-1">

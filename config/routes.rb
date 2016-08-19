@@ -8,7 +8,9 @@ Rails.application.routes.draw do
 
     resources :friendings, only: [:create, :destroy, :index], shallow: true
     resources :photos, except: [:edit, :update], shallow: true
+    get "/cover-photo" => "users#edit_cover_photo"
 
+     get "/profile-photo" => "users#edit_profile_photo"
 
     resources :posts, only: [:index, :create, :destroy], shallow: true do
         resources :comments, only: [:create, :destroy], shallow: true do
@@ -24,7 +26,6 @@ Rails.application.routes.draw do
 
 
 
-  get "/friends" => "static_pages#friends"
   get "/photos" => "static_pages#photos"
   get "/edit-profile" => "static_pages#edit_profile"
 

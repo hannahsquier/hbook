@@ -59,6 +59,19 @@ class UsersController < ApplicationController
 
   end
 
+  def edit_cover_photo
+    @user = User.find(params[:user_id])
+    @profile = @user.profile
+    @photos = Photo.where(user_id: params[:user_id])
+
+  end
+
+  def edit_profile_photo
+    @user = User.find(params[:user_id])
+    @profile = @user.profile
+    @photos = Photo.where(user_id: params[:user_id])
+  end
+
   private
 
   def user_params
@@ -67,7 +80,7 @@ class UsersController < ApplicationController
                                    :password_confirmation, profile_attributes: 
                                    [:college, :city, :state, :country, :phone, 
                                     :words_to_live_by, :about_me, 
-                                    :password_confirmation])
+                                    :password_confirmation, :profile_photo_id, :cover_photo_id])
   end
 
 
