@@ -5,19 +5,18 @@ class PhotosController < ApplicationController
 
 	def index
 	
-		@photos = Photo.all
+		@photos = Photo.where(user_id: params[:user_id])
 	end
 
   def create    
-    @photo = Photo.new(photo_params)
-   
+  		@photo = current_user.photos.build(photo_params)
+
       if @photo.save
          redirect_to user_photos_path(params[:user_id]), success: 'Photo was uploaded.'
     
       else
       	errors = @photo.errors.full_messages.join(", ")
       	flash[:error] = "Could not upload photo #{errors}"
-      	redirect_to user_posts_path(params[:user_id])
         redirect_to user_photos_path(params[:user_id]), sorry: 'Photo was not uploaded.'
       end
     
@@ -26,6 +25,6 @@ class PhotosController < ApplicationController
 	private
 
 	def photo_params
-    params.require(:photo).permit(:file)
+    params.require(:photo).permit(:user_id, :file)
   end
 end

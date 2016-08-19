@@ -27,6 +27,7 @@ class User < ApplicationRecord
   end
 
   has_many :posts
+  has_many :photos
   has_many :comments
   has_one :profile, inverse_of: :user
   has_many :likes, foreign_key: "liker_id"

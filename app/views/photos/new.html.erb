@@ -3,7 +3,6 @@
 <%= render 'shared/subnav' %>
 	
 	<div class="form-group text-center">
-    
     <%= form_for [:user, @photo] do |photo_field| %>
       <%= photo_field.label :file %>
       <%= photo_field.file_field :file, class: "form-control align-center" %>
