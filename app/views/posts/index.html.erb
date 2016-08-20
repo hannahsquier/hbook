@@ -1,62 +1,21 @@
 <%= render 'shared/cover' %>
-
 <%= render 'shared/subnav' %>
 
-      <!-- Timeline -->
-      <section id="timeline">
-
-        <div class="left col-xs-12 col-sm-4 col-sm-offset-1">
-
-          <!-- About -->
-          <article>
-            <h2>About</h2>
-
-            <form class="form-horizontal">
-            <div class="form-group">
-              <label class="col-xs-5 control-label">Birthday</label>
-              <div class="col-xs-7">
-                <p class="form-control-static">
-              <% if @profile.user.birthday %>
-                  <%= @profile.user.birthday.strftime("%B %d, %Y")  %>
-                <% end %>
-                </p>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="col-xs-5 control-label">College</label>
-              <div class="col-xs-7">
-                <p class="form-control-static"><%= @profile.college %></p>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="col-xs-5 control-label">Hometown</label>
-                <div class="col-xs-7">
-                  <p class="form-control-static"><%= @profile.hometown %></p>
-                </div>
-              </div>
-            </form>
-          </article>
-
-          <!-- Photos -->
-
-         
-            <!-- Friends -->
-         <%= render 'timeline_photos' %>
-          <%= render 'timeline_friends' %>
-        </div> <!-- end left -->
+  <section id="timeline">
+    <div class="left col-xs-12 col-sm-4 col-sm-offset-1">
+      <%= render 'timeline_about', profile: @profile %>
+      <%= render 'timeline_photos' %>
+      <%= render 'timeline_friends' %>
+    </div> <!-- end left -->
 
 
-        <!-- right -->
-        <div id="right" class="col-xs-12  col-sm-6">
-          <!-- create post -->
-          <%= render 'new_post_form' %>
-
-
-        <!-- posted post -->
-          <%= render 'posts' %>
+      
+    <div id="right" class="col-xs-12  col-sm-6">
+      
+      <%= render 'new_post_form' %>
+      <%= render 'posts' %>
       
  
- 
-    <%= render 'shared/footer' %>
+    </div>
+
+<%= render 'shared/footer' %></section>

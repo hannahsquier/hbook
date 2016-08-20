@@ -1,0 +1,31 @@
+
+<article>
+  <h2>About</h2>
+
+  <form class="form-horizontal">
+  <div class="form-group">
+    <label class="col-xs-5 control-label">Birthday</label>
+    <div class="col-xs-7">
+      <p class="form-control-static">
+    <% if profile.user.birthday %>
+        <%= profile.user.birthday.strftime("%B %d, %Y")  %>
+      <% end %>
+      </p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-xs-5 control-label">College</label>
+    <div class="col-xs-7">
+      <p class="form-control-static"><%= profile.college %></p>
+    </div>
+  </div>
+
+    <div class="form-group">
+      <label class="col-xs-5 control-label">Hometown</label>
+        <div class="col-xs-7">
+          <p class="form-control-static"><%= profile.hometown %></p>
+        </div>
+    </div>
+  </form>
+</article>
