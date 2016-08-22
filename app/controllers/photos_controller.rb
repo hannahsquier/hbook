@@ -1,12 +1,11 @@
 class PhotosController < ApplicationController
   before_action :require_login
-  
+
 	def new
 		@photo = Photo.new
 	end
 
 	def index
-	
 		@photos = Photo.where(user_id: params[:user_id])
 	end
 

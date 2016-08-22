@@ -6,13 +6,13 @@
     <% else %>
       col-lg-offset-0
     <% end %>
-      col-lg-5 friend">
+      col-lg-5 friend ">
 
-    <div class="row">
-      <div class="col-xs-4">
+    <div class="row friend-div">
+      <div class="col-xs-4 friend-div">
 
       <% if friend.profile.profile_photo %>
-        <%= image_tag friend.profile.profile_photo.file.url, class: "friend" %>
+        <%= image_tag friend.profile.profile_photo.file.url(:thumb), class: "friend" %>
       <% else %>
         <%= image_tag "default_profile_photo.jpg", class: "friend" %>
 

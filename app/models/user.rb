@@ -76,6 +76,13 @@ class User < ApplicationRecord
   end
 
 
+  def self.search(query)
+    if query
+      where("first_name LIKE ? OR last_name LIKE ?", "%#{query}%", "%#{query}%")
+    else
+      where("")
+    end
+  end
 
   private
   def is_valid_birthday?

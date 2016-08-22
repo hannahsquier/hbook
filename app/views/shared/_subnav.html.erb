@@ -27,16 +27,16 @@
 
         <li
          <% if params[:controller] == 'photos' %>
-            class="photos"
+              class="active"
           <% end %>
-        >
-          <%= link_to "Photos <span class='badge'>#{User.find(current_page_user_id).photos.count}</span>".html_safe, user_photos_path(current_page_user_id) %>
+          >
+        <%= link_to "Photos <span class='badge'>#{User.find(current_page_user_id).photos.count}</span>".html_safe, user_photos_path(current_page_user_id) %>
 
         </li>
 
         <li
          <% if  params[:controller] == 'friendings' %>
-            class="friends"
+               class="active"
           <% end %>
           >
           <%= link_to "Friends <span class='badge'>#{User.find(current_page_user_id).friended_users.count}</span>".html_safe, user_friendings_path(current_page_user_id) %>

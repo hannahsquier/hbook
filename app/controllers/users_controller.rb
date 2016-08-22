@@ -4,7 +4,11 @@ class UsersController < ApplicationController
   before_action :user_is_current_user?, only: [:edit, :update]
 
   def index
-    @users = User.all
+    if params[:query]
+      @users = User.search(params[:query])
+    else
+      @users = User.all
+    end
   end
 
   def new

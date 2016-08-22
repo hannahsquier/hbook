@@ -14,7 +14,11 @@
 
 
       <section class="form-group collapse navbar-collapse col-xs-10 col-sm-6 col-md-3 search-bar-container" id="myNavbar">
-        <input type="text" class="form-control search-bar" placeholder="Search for users">
+          <%= form_tag users_path, method: 'get' do %>
+            <%= text_field_tag :query, nil, class: "form-control search-bar", placehodler: "Search for Users" %>
+            <%= submit_tag "Search" %>
+          <% end %>
+        <!-- <input type="text" class="form-control search-bar" placeholder="Search for users"> -->
       </section>
 
 
