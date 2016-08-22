@@ -15,8 +15,9 @@
 
 
     <p><%= comment.body %></p>
+    <h2 class="comment-h2">
      <div class="row">
-      <div class="pull-left">
+      <div class="pull-left" id="comment-like-div">
 
       <% unless comment.likes.any? { |like| like.liker == current_user } %>
         <%= link_to "<p>Like</p>".html_safe, comment_likes_path(comment.id), method: :post, class: "likes-count" %>
@@ -27,10 +28,10 @@
         <p class="liked-this"><%= other_likes(comment) %></p>
 
       </div>
-    <div class="row">
     <% if comment.author == current_user %>
-      <%= link_to "Delete", comment_path(comment.id), method: :delete, class: "col-xs-2 liked-this pull-right", id:"delete-comment" %>
+      <%= link_to "Delete", comment_path(comment.id), method: :delete, class: "col-xs-2 likes-count pull-right", id:"delete-comment" %>
     <% end %>
-    </div>
+    
+    </h2>
   </article>
 <% end %>

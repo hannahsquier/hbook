@@ -1,5 +1,5 @@
  <article class="friends">
-  <h2>Friends (310)</h2>
+  <h2>Friends (<%= User.find(current_page_user_id).friended_users.count %>)</h2>
   <% @user.friended_users.limit(9).each do |friend| %>
     <div class="friend-div">
 
