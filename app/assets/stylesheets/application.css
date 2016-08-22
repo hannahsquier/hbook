@@ -86,23 +86,26 @@ font-size: 28px; }
 }
 .cover-photo-div {
   padding: 0px;
+  position: relative;
   /*object-fit: cover;*/
+  background-image: ;
 }
 .cover-photo {
   height: 500px;
   width:100%;
-  z-index: -50;
-
-
+  z-index: 1;
+  position: relative;
+   top: 0; left: 0;
 }
 
 .profile-pic {
 position: absolute;
-top: 45%;
-margin-left: 25px;
+top: 60%;
+left: 25px;
+/*margin-left: 25px;*/
 width: 200px;
 border: 4px solid #eee;
-z-index: 1;
+z-index: 5;
 }
 
 #cover-name {

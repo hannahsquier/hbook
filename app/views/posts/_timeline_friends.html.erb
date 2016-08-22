@@ -4,7 +4,7 @@
     <div class="friend-div">
 
       <% if friend.profile.profile_photo %>
-        <%= image_tag friend.profile.profile_photo.file.url, class: "friend" %>
+        <%= image_tag friend.profile.profile_photo.file.url(:thumb), class: "friend" %>
       <% else %>
         <%= image_tag "default_profile_photo.jpg", class: "friend" %>
 
