@@ -29,8 +29,10 @@ module PostsHelper
   def current_page_user_id
 
 
-   if params[:user_id]
-      return params[:user_id].to_i
+    if params[:user_id]
+        return params[:user_id].to_i
+    elsif params[:controller] ==  "photos" && params[:action] == "show"
+      return Photo.find(params[:id]).user_id
     else
       return params[:id].to_i
     end

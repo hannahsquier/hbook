@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    @user = User.find_by_email(params[:email])
+    @user = current_user
 
     if sign_out
       flash[:success] = "You are now signed out."

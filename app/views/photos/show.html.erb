@@ -1,0 +1,11 @@
+<%= render 'shared/cover' %>
+
+<%= render 'shared/subnav' %>
+<div class="text-center" id="show-photo">
+   <%=image_tag @photo.file.url, class: "photo" %>
+</div>   
+
+<% if current_user.id == current_page_user_id %>
+	<%= link_to "Delete Photo", photo_path(@photo.id), method: :delete, class: "btn btn-danger delete-btn" %>
+<% end %>
+<%= render 'shared/footer' %>

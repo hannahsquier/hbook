@@ -25,7 +25,8 @@
 
       <%= link_to "<span class='glyphicon glyphicon-user'></span>".html_safe ,  user_posts_path(current_user.id), class: "name"%>
        <%= link_to current_user.full_name ,  user_posts_path(current_user.id), class: "name"%>
-      <%= link_to "Sign Out", session_path, method: :delete %>
+       <span style="color: white;">-</span>
+      <%= link_to "Sign Out", session_path, method: :delete, class: "name" %>
     </div>
 
 

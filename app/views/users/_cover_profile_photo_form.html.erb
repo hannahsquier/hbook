@@ -4,16 +4,23 @@
 
     
     <%= user_fields.fields_for :profile do |profile_fields| %> 
+        <% if @photos.empty? %>
+          <h3 class="text-center">You don't have any photos. Please upload some photos.</h3>
+          <br>
+        <% end %>
         <% @photos.each do |photo| %>
 
-          <%=image_tag photo.file.url %>
+          <%=image_tag photo.file.url, class: "photo-form" %>
           <%= profile_fields.radio_button fk, photo.id %>
         <% end %>
     <% end %>
 
     <div class="row">
       <div class="col-xs-2 col-xs-offset-5">
+      <% unless @photos.empty? %>
+
         <%= user_fields.submit class: "btn btn-primary" %>
+      <% end %>
       </div>
     <% end %>
     </div>

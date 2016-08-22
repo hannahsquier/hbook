@@ -30,19 +30,19 @@
 
   <body data-no-turbolinks>
 
-    <% flash.each do |type, message| %>
+      <% flash.each do |type, message| %>
 
-      <% if type == "sorry" || type == "error" %>
-        <div class="alert alert-danger" id="error-flash">
-          <strong><%= type.capitalize %>! <%= message %></strong>
-        </div>
+        <% if type == "sorry" || type == "error" %>
+          <div class="alert alert-danger" id="error-flash">
+            <strong><%= type.capitalize %>! <%= message %></strong>
+          </div>
 
-      <% else %>
-        <div class="alert alert-success", id="success-flash">
-          <strong><%= type.capitalize %>! <%= message %></strong>
-        </div>
+        <% else %>
+          <div class="alert alert-success", id="success-flash">
+            <strong><%= type.capitalize %>! <%= message %></strong>
+          </div>
 
-      <% end %>
+        <% end %>
     <% end %>
 
     <% if current_user %>

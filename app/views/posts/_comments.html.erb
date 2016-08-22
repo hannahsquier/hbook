@@ -19,7 +19,7 @@
       <div class="pull-left">
 
       <% unless comment.likes.any? { |like| like.liker == current_user } %>
-        <%= link_to "<p>Like</p>".html_safe, comment_likes_path(comment.id), method: :comment, class: "likes-count" %>
+        <%= link_to "<p>Like</p>".html_safe, comment_likes_path(comment.id), method: :post, class: "likes-count" %>
 
         <% else %>
           <%= link_to "<p>Unlike</p>".html_safe, like_path(comment.id), method: :delete, class: "likes-count" %>

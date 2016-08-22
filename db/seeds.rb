@@ -12,6 +12,7 @@ Like.destroy_all
 Friending.destroy_all
 Comment.destroy_all
 Profile.destroy_all
+Photo.destroy_all
 
 User.create(email: "hannah@gmail.com", password: "password")
 

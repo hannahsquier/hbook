@@ -213,6 +213,12 @@ color: black;
 /** photos **/
 .photo {
   width: 100%;
+  margin: 10px;
+}
+
+.delete-btn {
+  margin-left: 45%;
+  margin-right: auto;
 }
 
 a.hovertext {
@@ -236,6 +242,16 @@ a.hovertext:hover:after, a.hovertext:focus:after {
   opacity: 1.0;
 }
 
+#show-photo {
+  width: 500px;
+margin-left: auto;
+margin-right: auto;
+margin-top: 100px;}
+
+.photo-form {
+  width: 200px;
+  margin: 10px;
+}
 /** friends **/
   .friend {
     border: 1px #aaa solid;
