@@ -88,7 +88,6 @@ font-size: 28px; }
   padding: 0px;
   position: relative;
   /*object-fit: cover;*/
-  background-image: ;
 }
 .cover-photo {
   height: 500px;
@@ -278,7 +277,7 @@ margin-top: 100px;}
     }
 
  .friend-info {
-  margin-top: 10%; 
+  margin-top: 10%;
  }
 
 /* .friend-div {
@@ -403,7 +402,7 @@ margin-top: 100px;}
     margin: 10px; }
   #timeline .comment #delete-comment {
 
-    vertical-align: bottom; 
+    vertical-align: bottom;
     font-size: 14px;
     color: #3b5998;
     margin-right: -5px;}
