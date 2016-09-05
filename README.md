@@ -1,4 +1,4 @@
-# [HBook](https://mysterious-hollows-19482.herokuapp.com)
+# 💻 [HBook](https://mysterious-hollows-19482.herokuapp.com)
 
 This Facebook clone is a full featured rails app. Post, comment, like, and upload to your heart's content. The entire authentication backend is built from scratch. Who doesn't need another social media app?
 
@@ -7,23 +7,23 @@ This Facebook clone is a full featured rails app. Post, comment, like, and uploa
 # Preview
 
 ## 1. Create an Account
-![Screenshot](screenshot5.png)
+![Screenshot](screenshots/screenshot5.png)
 
 ## 2. Build Your Profile
 
-![Screenshot](screenshot4.png)
+![Screenshot](screenshots/screenshot4.png)
 
 ## 3. Upload Photos
 
-![Screenshot](screenshot3.png)
+![Screenshot](screenshots/screenshot3.png)
 
 ## 4. Friend other Users
 
-![Screenshot](screenshot2.png)
+![Screenshot](screenshots/screenshot2.png)
 
 ## 5. Post on Other User's Timelines
 
-![Screenshot](screenshot1.png)
+![Screenshot](screenshots/screenshot1.png)
 
 ## Built With
 
