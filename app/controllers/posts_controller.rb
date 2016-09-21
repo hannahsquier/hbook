@@ -5,24 +5,24 @@ class PostsController < ApplicationController
     @user = User.find(params[:user_id])
     @profile = @user.profile
     @post = Post.new
-    @comment = Comment.new
+    @empty_comment = Comment.new
+    @posts = Post.where(receiver_id: @user.id).all.reverse
   end
 
   def create
-    @post = User.find(current_user.id).posts.build(post_params)
+    @post = current_user.posts.build(post_params)
     @post.receiver_id = params[:user_id]
 
     if @post.save
-      @user = User.find(params[:user_id])
-      @profile = @user.profile
-      @post = Post.new
-      @comment = Comment.new
+      # @user = User.find(params[:user_id])
+      # @profile = @user.profile
+      @empty_comment = Comment.new
 
       flash[:success] = "Thank you for your post."
 
       respond_to do |format|
         format.html { redirect_to user_posts_path(params[:user_id]) }
-        format.js# { render :create_posts }
+        format.js
       end
     else
 

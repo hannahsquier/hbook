@@ -1,22 +1,26 @@
 <%= render 'shared/cover' %>
 <%= render 'shared/subnav' %>
 
-  <section id="timeline">
-    <div class="left col-xs-12 col-sm-4 col-sm-offset-1">
-      <%= render 'timeline_about', profile: @profile %>
-      <%= render 'timeline_photos' %>
-      <%= render 'timeline_friends' %>
-    </div> <!-- end left -->
+<section id="timeline">
+  <div class="left col-xs-12 col-sm-4 col-sm-offset-1">
+    <%= render 'timeline_about', profile: @profile %>
+    <%= render 'timeline_photos' %>
+    <%= render 'timeline_friends' %>
+  </div> <!-- end left -->
 
 
 
-    <div id="right" class="col-xs-12  col-sm-6">
+  <div id="right" class="col-xs-12  col-sm-6">
 
-      <%= render 'new_post_form' %>
-      <%= render 'posts', user: @user %>
+    <%= render 'new_post_form' %>
 
+    <div class="posts">
+
+      <%= render @posts %>
 
     </div>
-    </div>
+
+
+  </div>
 </section>
 <%= render 'shared/footer' %>

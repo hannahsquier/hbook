@@ -1,0 +1,11 @@
+console.log("hqyyy")
+var posts = "<%=j( render 'posts/posts', user: @user ) %>"
+var $posts = $(posts)
+
+var newPostForm = "<%= j(render 'posts/new_post_form') %>"
+var $newPostForm = $(newPostForm)
+
+$rightDiv = $("div#right")
+$rightDiv.empty();
+
+$rightDiv.append($newPostForm).append($posts)

@@ -1,0 +1,44 @@
+<article class="posted-post">
+    <a href="timeline.html" class="my-thumbnail">
+      <% if post.author.profile.profile_photo %>
+        <%= image_tag post.author.profile.profile_photo.file.url, class: "friend" %>
+      <% else %>
+        <%= image_tag "default_profile_photo.jpg", class: "friend" %>
+
+      <% end %>
+    </a>
+
+    <%= link_to post.author.full_name, user_posts_path(current_user.id), id: "post-name" %>
+
+
+    <p id="post-date"><%= post.created_at.strftime("%A %B %d, %Y") %></p>
+
+
+     <p><%= post.body %></p>
+  <h2>
+    <div class="row">
+      <div class="pull-left">
+      <% unless post.likes.any? { |like| like.liker == current_user } %>
+        <%= link_to "<p>Like</p>".html_safe, post_likes_path(post.id), method: :post %>
+
+        <% else %>
+          <%= link_to "<p>Unlike</p>".html_safe, post_post_like_path(post.id), method: :delete %>
+      <% end %>
+        <p class="liked-this"><%= other_likes(post) %></p>
+
+      </div>
+
+    <% if post.author == current_user %>
+
+      <div class="pull-right">
+        <%= link_to '<p>Delete</p>'.html_safe, post_path(id: post.id), method: :delete, class: 'col-xs-1', id: "delete-post" %>
+      </div>
+    <% end %>
+    </div>
+  </h2>
+
+ </article>
+       <%= render post.comments %>
+
+
+  <%= render 'posts/new_comment_form', post: post, empty_comment: @empty_comment %>

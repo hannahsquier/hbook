@@ -1,15 +1,21 @@
 class CommentsController < ApplicationController
   def create
+      # @user = User.find(params[:user_id])
+
+    @empty_comment = Comment.new
+
     @comment = Post.find(params[:post_id]).comments.build(comment_params)
     current_user.comments << @comment
+    @user = @comment.commentable.receiver
+    @profile = @user.profile
+    @post = Post.new
 
     if @comment.save
       flash[:success] = "Thanks for commenting!"
-      redirect_to referer
 
       respond_to do |format|
         format.html { redirect_to referer }
-        format.js { render :new_comment }
+        format.js { render "posts/new_comment" }
       end
 
     else
@@ -17,6 +23,7 @@ class CommentsController < ApplicationController
       flash[:error] = "We could process your comment. #{errors}"
       redirect_to referer
     end
+
   end
 
   def destroy
@@ -27,6 +34,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:body)
+    params.require(:comment).permit(:body, :user_id)
   end
 end

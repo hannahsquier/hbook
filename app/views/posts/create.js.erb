@@ -1,10 +1,4 @@
-var posts = "<%=j( render 'posts', user: @user ) %>"
-var $posts = $(posts)
+$newPost = "<%= j(render @post) %>"
+$posts = $(".posts")
 
-var newPostForm = "<%= j(render 'new_post_form') %>"
-var $newPostForm = $(newPostForm)
-
-$rightDiv = $("div#right")
-$rightDiv.empty();
-
-$rightDiv.append($newPostForm).append($posts)
+$posts.prepend($newPost)
