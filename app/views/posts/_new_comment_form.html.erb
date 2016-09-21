@@ -1,5 +1,5 @@
 <article class="comment">
-  <%= form_for [post, @comment] do |f| %>
+  <%= form_for [post, @comment], remote: true do |f| %>
     <%= f.text_area :body, rows: 1, placeholder: "Leave a comment...", class: "form-control", id: "new-comment" %>
 
       <h2>

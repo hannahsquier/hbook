@@ -1,4 +1,4 @@
-<% Post.where(receiver_id: @user.id).all.reverse.each do |post| %>
+<% Post.where(receiver_id: user.id).all.reverse.each do |post| %>
  <article class="posted-post">
     <a href="timeline.html" class="my-thumbnail">
       <% if post.author.profile.profile_photo %>

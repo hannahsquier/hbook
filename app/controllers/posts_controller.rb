@@ -2,7 +2,6 @@ class PostsController < ApplicationController
   before_action :require_login
 
   def index
-
     @user = User.find(params[:user_id])
     @profile = @user.profile
     @post = Post.new
@@ -14,8 +13,17 @@ class PostsController < ApplicationController
     @post.receiver_id = params[:user_id]
 
     if @post.save
+      @user = User.find(params[:user_id])
+      @profile = @user.profile
+      @post = Post.new
+      @comment = Comment.new
+
       flash[:success] = "Thank you for your post."
-      redirect_to user_posts_path(params[:user_id])
+
+      respond_to do |format|
+        format.html { redirect_to user_posts_path(params[:user_id]) }
+        format.js# { render :create_posts }
+      end
     else
 
 
