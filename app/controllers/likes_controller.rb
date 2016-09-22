@@ -1,11 +1,15 @@
 class LikesController < ApplicationController
   def create
 
-    likeable = extract_likeable
-    like = likeable.likes.build(liker_id: current_user.id)
+    @likeable = extract_likeable
+    like = @likeable.likes.build(liker_id: current_user.id)
 
     if like.save
-      redirect_to referer
+
+      respond_to do |format|
+        format.html  { redirect_to referer }
+        format.js
+      end
     else
       errors = like.errors.full_messages.join(", ")
       flash[:error] = "Could not like. #{errors}"
@@ -14,12 +18,15 @@ class LikesController < ApplicationController
   end
 
   def destroy
-
-
-    like = Like.where(likeable_id:get_likeable_id, likeable_type: params[:likeable], liker_id:current_user.id).first
-    if like.destroy
+    @like = Like.where(likeable_id:get_likeable_id, likeable_type: params[:likeable], liker_id:current_user.id).first
+    if @like.destroy
       flash[:success] = "Successfully unliked"
-      redirect_to referer
+
+      respond_to do |format|
+        format.html  { redirect_to referer }
+        format.js { render :destroy }
+      end
+
     else
       flash[:sorry] = "Could not unlike"
       redirect_to referer

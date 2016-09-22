@@ -1,0 +1,10 @@
+  <div class="pull-left likesection">
+  <% unless post.likes.any? { |like| like.liker == current_user } %>
+    <%= link_to "<p>Like</p>".html_safe, post_likes_path(post.id), method: :post, remote: true %>
+
+    <% else %>
+      <%= link_to "<p>Unlike</p>".html_safe, post_post_like_path(post.id), method: :delete, remote: true %>
+  <% end %>
+    <p class="liked-this"><%= other_likes(post) %></p>
+
+  </div>

@@ -1,0 +1,4 @@
+(function() {
+  var $comment = $('article[data-comment-id="<%= @comment.id %>"]');
+  $comment.remove();
+})();

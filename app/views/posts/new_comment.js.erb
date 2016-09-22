@@ -1,11 +1,6 @@
-console.log("hqyyy")
-var posts = "<%=j( render 'posts/posts', user: @user ) %>"
-var $posts = $(posts)
-
-var newPostForm = "<%= j(render 'posts/new_post_form') %>"
-var $newPostForm = $(newPostForm)
-
-$rightDiv = $("div#right")
-$rightDiv.empty();
-
-$rightDiv.append($newPostForm).append($posts)
+(function() {
+  var newComment = "<%= j(render 'posts/comment', comment: @comment, post: @post) %>"
+  var $newComment = $(newComment)
+  var $postDiv = $('div[data-post-id="<%= @post.id %>"]').children().filter(".post-and-comments");
+  $newComment.appendTo($postDiv).hide().slideDown();
+})();

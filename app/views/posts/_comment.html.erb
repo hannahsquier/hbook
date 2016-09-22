@@ -1,4 +1,4 @@
-  <article class="comment posted-post row">
+  <article class="comment posted-post row" data-comment-id = "<%= comment.id %>">
     <a class="my-thumbnail">
       <% if post.author.profile.profile_photo %>
         <%= image_tag post.author.profile.profile_photo.file.url, class: "friend" %>
@@ -16,19 +16,11 @@
     <p><%= comment.body %></p>
     <h2 class="comment-h2">
      <div class="row">
-      <div class="pull-left" id="comment-like-div">
 
-      <% unless comment.likes.any? { |like| like.liker == current_user } %>
-        <%= link_to "<p>Like</p>".html_safe, comment_likes_path(comment.id), method: :post, class: "likes-count" %>
+      <%= render "posts/comment_like", comment: comment %>
 
-        <% else %>
-          <%= link_to "<p>Unlike</p>".html_safe, like_path(comment.id), method: :delete, class: "likes-count" %>
-      <% end %>
-        <p class="liked-this"><%= other_likes(comment) %></p>
-
-      </div>
     <% if comment.author == current_user %>
-      <%= link_to "Delete", comment_path(comment.id), method: :delete, class: "col-xs-2 likes-count pull-right", id:"delete-comment" %>
+      <%= link_to "Delete", comment_path(comment.id), method: :delete, class: "col-xs-2 likes-count pull-right", id:"delete-comment", remote: true %>
     <% end %>
 
     </h2>

@@ -1,0 +1,16 @@
+
+(function() {
+  if("<%= @like.likeable.class %>" === "Comment") {
+    var newLikeSection = "<%= j(render 'posts/comment_like', comment: @like.likeable) %>"
+    var $newLikeSection = $(newLikeSection)
+
+    var $oldLikeSection = $('article[data-comment-id="<%= @like.likeable.id %>"]').find(".likesection");
+
+    $oldLikeSection.replaceWith($newLikeSection)
+
+  } else if("<%= @likeable.class %>" === "Post")
+    var newLikeSection = "<%= j(render 'posts/post_like', post: @like.likeable) %>"
+    var $newLikeSection = $(newLikeSection)
+    var $oldLikeSection = $('div[data-post-id="<%= @like.likeable.id %>"]').find(".likesection").first();
+    $oldLikeSection.replaceWith($newLikeSection)
+})();

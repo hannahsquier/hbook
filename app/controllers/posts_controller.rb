@@ -35,8 +35,13 @@ class PostsController < ApplicationController
 
   def destroy
     user_id = Post.find(params[:id]).user_id
-    Post.find(params[:id]).destroy
-    redirect_to referer
+    @post = Post.find(params[:id])
+    @post.destroy
+
+    respond_to do |format|
+      format.html { redirect_to referer }
+      format.js
+    end
   end
 
   private

@@ -2,13 +2,10 @@ class CommentsController < ApplicationController
   def create
       # @user = User.find(params[:user_id])
 
-    @empty_comment = Comment.new
-
     @comment = Post.find(params[:post_id]).comments.build(comment_params)
     current_user.comments << @comment
-    @user = @comment.commentable.receiver
-    @profile = @user.profile
-    @post = Post.new
+    @post = @comment.commentable
+
 
     if @comment.save
       flash[:success] = "Thanks for commenting!"
@@ -27,8 +24,13 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    Comment.find(params[:id]).destroy
-    redirect_to referer
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+
+    respond_to do |format|
+      format.html { redirect_to referer }
+      format.js { render "posts/destroy_comment"}
+    end
   end
 
   private
